@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/checker.h"
+#include "../include/libft.h"
 
 static int		ft_charsize_int(int n)
 {

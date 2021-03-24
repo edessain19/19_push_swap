@@ -1,24 +1,29 @@
-NAME = checker
 SRCS = main.c \
-		./srcs/ft_itoa.c \
-		./srcs/ft_libft.c \
+		ft_cmd.c \
 		
 
-OBJS = $(SRCS:.c=.o)
+OBJS	=	$(SRCS:%.c=%.o)
 
-INCLUDE = ../include/checker.h
-CC = gcc -g -Wall -Werror -Wextra -pthread 
-RM = rm -f
+LIBFT	=	utils/libft/libft.a
 
-all:		${NAME}
+NAME	=	checker
 
-$(NAME):	$(OBJS)
-			$(CC) -I./ $(OBJS) -o $@
+CFLAGS	=	-Wall -Wextra -Werror -g
 
-clean:
-			$(RM) $(OBJS)
+all:		$(NAME)
+
+$(NAME):	$(OBJS) $(LIBFT)
+			gcc $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
+
+clean:		
+			rm -rf $(OBJS)
+			cd utils/libft/ && make $@
 
 fclean:		clean
-			$(RM) $(NAME)
+			rm -rf $(NAME)
+			rm -rf $(LIBFT)
 
 re:			fclean all
+
+$(LIBFT):
+			make bonus -C ./utils/libft
