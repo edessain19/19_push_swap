@@ -23,6 +23,7 @@ int     read_cmd(t_data *data);
 int     apply_cmd(t_data *data);
 int     check_cmd(t_data *data, int i);
 int     parsing(t_data *data, int argc, char **argv);
+int     check_order(t_data *data);
 
 /*
 ** Commande

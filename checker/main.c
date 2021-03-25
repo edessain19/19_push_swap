@@ -79,7 +79,7 @@ int     apply_cmd(t_data *data)
     {
         if (check_cmd(data, i) < 0)
         {
-            write(1, "Error\nInstruction invalide!\n", 28);
+            write(1, "Error\n", 6);
             return (-1);
         }
         i++;
@@ -102,6 +102,6 @@ int     main(int argc, char **argv)
     // printf("debug = %i\n", data.debug);
     read_cmd(&data);
     apply_cmd(&data);
-
+    check_order(&data);
     return (0);
 }
