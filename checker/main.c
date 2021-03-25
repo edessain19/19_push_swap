@@ -102,6 +102,6 @@ int     main(int argc, char **argv)
     // printf("debug = %i\n", data.debug);
     read_cmd(&data);
     apply_cmd(&data);
-    check_order(&data);
+    // check_order(&data);
     return (0);
 }

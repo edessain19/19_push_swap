@@ -31,7 +31,7 @@ int     check_cmd(t_data *data, int i)
 
 int     check_order(t_data *data)
 {
-    int i;
+    size_t i;
 
     i = 0;
     while (i < data->len_a - 1)
