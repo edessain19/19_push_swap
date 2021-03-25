@@ -1,10 +1,11 @@
 SRCS = main.c \
 		ft_cmd.c \
+		check_cmd.c \
 		
 
 OBJS	=	$(SRCS:%.c=%.o)
 
-LIBFT	=	utils/libft/libft.a
+LIBFT	=	libft/libft.a
 
 NAME	=	checker
 
@@ -17,7 +18,7 @@ $(NAME):	$(OBJS) $(LIBFT)
 
 clean:		
 			rm -rf $(OBJS)
-			cd utils/libft/ && make $@
+			cd libft/ && make $@
 
 fclean:		clean
 			rm -rf $(NAME)
@@ -26,4 +27,4 @@ fclean:		clean
 re:			fclean all
 
 $(LIBFT):
-			make bonus -C ./utils/libft
+			make bonus -C ./libft
