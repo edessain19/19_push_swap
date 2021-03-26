@@ -44,8 +44,8 @@ int     main(int argc, char **argv)
     if (parsing(&data, argc, argv) < 0)
         return (-1);
     // printf("debug = %i\n", data.debug);
-    printf("len = %i\n", data.len);
-    ft_print_tab(data.stack_a);
+    // printf("len = %i\n", data.len);
+    // ft_print_tab(data.stack_a, data.len);
     read_cmd(&data);
     apply_cmd(&data);
     // check_order(&data);

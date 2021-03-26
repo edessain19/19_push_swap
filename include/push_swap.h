@@ -77,7 +77,7 @@ int     ft_batch_2(t_data *data);
 
 
 
-void    ft_print_tab(int *tab);
+void    ft_print_tab(int *tab, int len);
 void    ft_print_stack(t_data *data, char *cmd);
 
 

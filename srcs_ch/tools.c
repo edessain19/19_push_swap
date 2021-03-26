@@ -110,13 +110,13 @@ int		check_digit(int argc, char **argv, int i)
 	return (0);
 }
 
-void ft_print_tab(int *tab)
+void ft_print_tab(int *tab, int len)
 {
     int i;
 
     i = 0;
     printf("-----------\n");
-    while (tab[i])
+    while (i < len)
     {
         printf("tab[%i] = %i\n", i, tab[i]);
         i++;
