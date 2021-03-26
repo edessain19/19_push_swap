@@ -50,6 +50,6 @@ int     main(int argc, char **argv)
     read_cmd(&data);
     apply_cmd(&data);
     // check_order(&data);
-    ft_free(&data);
+    // ft_free(&data);
     return (0);
 }

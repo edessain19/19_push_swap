@@ -1,10 +1,10 @@
 #include "../include/push_swap.h"
 
-void    ft_free(t_data *data)
-{
-    free(data->stack_a);
-    free(data->stack_b);
-}
+// void    ft_free(t_data *data)
+// {
+//     free(data->stack_a);
+//     free(data->stack_b);
+// }
 
 int     check_parsing(t_data *data, int argc, char **argv)
 {
@@ -23,9 +23,10 @@ int     check_parsing(t_data *data, int argc, char **argv)
 
 int     ft_parse_string(t_data *data, int argc, char **argv, int i)
 {
-    char    *tab;
+    char    **tab;
 
-    tab = ft_split(argv[i + 1], " ");
+    write(1, "a", 1);
+    tab = ft_split(argv[i], ' ');
     if (check_digit(argc, tab, 0))
         return (-1);
     i = 0;
@@ -52,8 +53,14 @@ int     parsing(t_data *data, int argc, char **argv)
     i = check_parsing(data, argc, argv);
     if (i == -1)
         return (-1);
-    if (argv[i + 1][ft_strlen(argv[i + 1]) == 0])
-        return (ft_parse_string(data, argc, argv, i));
+    printf("argv[i] = %s\n", argv[i]);
+    while (argv[i][j])
+    {
+        if (argv[i][j] == ' ')
+            return (ft_parse_string(data, argc, argv, i));
+        j++;
+    }
+    j = 0;
     if (check_digit(argc, argv, i))
         return (-1);
     while (i < data->len)
