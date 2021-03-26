@@ -1,4 +1,4 @@
-#include "./include/checker.h"
+#include "../include/push_swap.h"
 
 int     ss(t_data *data)
 {
@@ -37,7 +37,7 @@ int     sb(t_data *data)
 
 int     pa(t_data *data)
 {
-    size_t i;
+    int i;
 
     i = data->len_a;
     if (!data->stack_b[0])
@@ -63,7 +63,7 @@ int     pa(t_data *data)
 
 int     pb(t_data *data)
 {
-    size_t i;
+    int i;
 
     i = data->len_b;
     if (!data->stack_a[0])
@@ -146,7 +146,6 @@ int     rra(t_data *data)
     int i;
     int tmp;
 
-    printf("len_a = %zu", data->len_a);
     i = data->len_a;
     tmp = data->stack_a[i - 1];
     while(i > 0)

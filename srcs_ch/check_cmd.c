@@ -1,4 +1,4 @@
-#include "./include/checker.h"
+#include "../include/push_swap.h"
 
 int     check_cmd(t_data *data, int i)
 {
@@ -31,7 +31,7 @@ int     check_cmd(t_data *data, int i)
 
 int     check_order(t_data *data)
 {
-    size_t i;
+    int i;
 
     i = 0;
     while (i < data->len_a - 1)
@@ -64,7 +64,7 @@ void ft_print_tab(char **tab)
 
 void    ft_print_stack(t_data *data, char *cmd)
 {
-    size_t i;
+    int i;
 
     i = 0;
     // write(1, "stack a = ", 10);

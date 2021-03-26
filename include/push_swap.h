@@ -1,5 +1,5 @@
-#ifndef CHECKER_H
-# define CHECKER_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include "../libft/include/libft.h"
 # include <stdio.h>
@@ -12,9 +12,9 @@ typedef struct		s_data
     char    **tab_cmd;
     int     *stack_a;
     int     *stack_b;
-    size_t  len;
-    size_t  len_a;
-    size_t  len_b;
+    int     len;
+    int     len_a;
+    int     len_b;
     int     debug;
 }                   t_data;
 
@@ -22,8 +22,20 @@ int     main(int argc, char **argv);
 int     read_cmd(t_data *data);
 int     apply_cmd(t_data *data);
 int     check_cmd(t_data *data, int i);
-int     parsing(t_data *data, int argc, char **argv);
 int     check_order(t_data *data);
+
+/*
+** tools.c
+*/
+
+int		check_digit(int argc, char **argv, int i);
+int     parsing(t_data *data, int argc, char **argv);
+int     check_parsing(t_data *data, int argc, char **argv);
+int     ft_parse_string(t_data *data, int argc, char **argv, int i);
+void    ft_free(t_data *data);
+
+
+
 
 /*
 ** Commande
