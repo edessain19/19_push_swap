@@ -8,6 +8,7 @@
 
 typedef struct		s_data
 {
+    int     nb_max;
     char    *instruction;
     char    **tab_cmd;
     int     *stack_a;
@@ -33,6 +34,8 @@ int     parsing(t_data *data, int argc, char **argv);
 int     check_parsing(t_data *data, int argc, char **argv);
 int     ft_parse_string(t_data *data, int argc, char **argv, int i);
 void    ft_free(t_data *data);
+void    init_struct(t_data *data, int i);
+
 
 
 

@@ -6,6 +6,16 @@
 //     free(data->stack_b);
 // }
 
+void    init_struct(t_data *data, int i)
+{
+    i = 1;
+    data->len = 0;
+    data->debug = 0;
+    data->len_a = 0;
+    data->len_b = 0;
+    data->nb_max = 0;
+}
+
 int     check_parsing(t_data *data, int argc, char **argv)
 {
     int     i;
@@ -25,8 +35,15 @@ int     ft_parse_string(t_data *data, int argc, char **argv, int i)
 {
     char    **tab;
 
-    write(1, "a", 1);
     tab = ft_split(argv[i], ' ');
+    while (tab[data->len])
+        data->len++;
+    // printf("argv = %s\n", argv[i]);
+    // printf("len = %i\n", data->len);
+    data->stack_a = malloc(sizeof(int) * data->len);
+    data->stack_b = malloc(sizeof(int) * data->len);
+    if (data->stack_a == NULL || data->stack_b == NULL)
+        return (-1);
     if (check_digit(argc, tab, 0))
         return (-1);
     i = 0;
@@ -46,20 +63,21 @@ int     parsing(t_data *data, int argc, char **argv)
     int j;
 
     j = 0;
-    data->stack_a = malloc(sizeof(int) * data->len);
-    data->stack_b = malloc(sizeof(int) * data->len);
-    if (data->stack_a == NULL || data->stack_b == NULL)
-        return (-1);
     i = check_parsing(data, argc, argv);
     if (i == -1)
         return (-1);
-    printf("argv[i] = %s\n", argv[i]);
+    // printf("argv[i] = %s\n", argv[i]);
     while (argv[i][j])
     {
         if (argv[i][j] == ' ')
             return (ft_parse_string(data, argc, argv, i));
         j++;
     }
+    data->len = argc;
+    data->stack_a = malloc(sizeof(int) * data->len);
+    data->stack_b = malloc(sizeof(int) * data->len);
+    if (data->stack_a == NULL || data->stack_b == NULL)
+        return (-1);
     j = 0;
     if (check_digit(argc, argv, i))
         return (-1);

@@ -176,3 +176,35 @@ int     rrb(t_data *data)
         ft_print_stack(data, "---rrb---\n");
     return (0);
 }
+
+void    ft_print_stack(t_data *data, char *cmd)
+{
+    int i;
+
+    i = 0;
+    // write(1, "stack a = ", 10);
+    // printf("len_a = %zu\n", data->len_a);
+    printf("%s", cmd);
+    printf("stack_a = ");
+    while (i < data->len_a)
+    {
+        printf("%i ", data->stack_a[i]);
+        // write(1, &data->stack_a[i], sizeof(data->stack_a[i]));
+        // write(i, " ", 1);
+        i++;
+    }
+    printf("\n");
+    // write(1, "\n", 1);
+    i = 0;
+    // write(1, "stack b = ", 10);
+    printf("stack_b = ");
+    while (i < data->len_b)
+    {
+        printf("%i ", data->stack_b[i]);
+        // write(1, &data->stack_b[i], 8);
+        // write(i, " ", 1);
+        i++;
+    }
+    printf("\n");
+    // write(1, "\n", 1);
+}
