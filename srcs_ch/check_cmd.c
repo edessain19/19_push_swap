@@ -46,18 +46,3 @@ int     check_order(t_data *data)
     write(1, "OK\n", 3);
     return (0);
 }
-
-
-void ft_print_tab(char **tab)
-{
-    int i;
-
-    i = 0;
-    printf("-----------\n");
-    while (tab[i])
-    {
-        printf("tab[%i] = %s\n", i, tab[i]);
-        i++;
-    }
-    printf("-----------\n");
-}

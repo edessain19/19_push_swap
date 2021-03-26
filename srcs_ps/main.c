@@ -19,12 +19,12 @@ int     main(int argc, char **argv)
     init_struct(&data, argc);
     if (parsing(&data, argc, argv) < 0)
         return (-1);
-    while (data.stack_a[i])
-    {
-        
-
-    }
-
-
+    ft_print_tab(data.stack_a);
+    printf("len = %i\n", data.len);
+    if (data.len <= 5)
+        ft_small_batch(&data);
+    data.chunck = get_nbr_chunck(data.len);
+    printf("len = %i\n", data.len);
+    ft_print_tab(data.stack_a);
     return (0);
 }

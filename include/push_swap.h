@@ -8,7 +8,6 @@
 
 typedef struct		s_data
 {
-    int     nb_max;
     char    *instruction;
     char    **tab_cmd;
     int     *stack_a;
@@ -17,7 +16,12 @@ typedef struct		s_data
     int     len_a;
     int     len_b;
     int     debug;
+    int     chunck;
 }                   t_data;
+
+/*
+** **********************Checker***************************************************
+*/
 
 int     main(int argc, char **argv);
 int     read_cmd(t_data *data);
@@ -37,9 +41,6 @@ void    ft_free(t_data *data);
 void    init_struct(t_data *data, int i);
 
 
-
-
-
 /*
 ** Commande
 */
@@ -56,8 +57,27 @@ int     rrr(t_data *data);
 int     rra(t_data *data);
 int     rrb(t_data *data);
 
+/*
+** **********************Checker***************************************************
+*/
 
-void ft_print_tab(char **tab);
+int     ft_small_batch(t_data *data);
+int     ft_batch_4(t_data *data);
+int     ft_bath_3(t_data *data);
+int     ft_batch_2(t_data *data);
+
+
+
+
+
+
+
+
+
+
+
+
+void    ft_print_tab(int *tab);
 void    ft_print_stack(t_data *data, char *cmd);
 
 
