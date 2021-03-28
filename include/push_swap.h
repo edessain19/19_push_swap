@@ -72,6 +72,11 @@ int     ft_batch_2(t_data *data);
 
 
 
+/*
+** check_list.c
+*/
+
+int     check_order_stack(t_data *data);
 
 
 
