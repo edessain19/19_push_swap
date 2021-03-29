@@ -12,12 +12,6 @@
 
 #include "../include/push_swap.h"
 
-// void    ft_free(t_data *data)
-// {
-//     free(data->stack_a);
-//     free(data->stack_b);
-// }
-
 void	init_struct(t_data *data, int i)
 {
 	i = 1;
@@ -122,18 +116,4 @@ int		check_digit(int argc, char **argv, int i)
 		i++;
 	}
 	return (0);
-}
-
-void	ft_print_tab(int *tab, int len)
-{
-	int		i;
-
-	i = 0;
-	printf("-----------\n");
-	while (i < len)
-	{
-		printf("tab[%i] = %i\n", i, tab[i]);
-		i++;
-	}
-	printf("-----------\n");
 }
