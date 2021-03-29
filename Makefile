@@ -10,6 +10,7 @@ SRCS_PS = ./srcs_ps/main.c \
 		./srcs_ps/sort_small_batch.c \
 		./srcs_ch/quick_sort.c \
 		./srcs_ps/ft_algo_ps.c \
+		./srcs_ps/sort_stack_b.c \
 
 
 OBJS_CH	=	$(SRCS_CH:%.c=%.o)

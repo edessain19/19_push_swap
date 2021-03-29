@@ -7,54 +7,22 @@ void    send_to_chunck(t_data *data, int i, int bool)
         while (i != 0)
         {
             ra(data);
+            write(1, "ra\n", 3);
             i--;
         }
-        pa(data);
+        pb(data);
+        write(1, "pb\n", 3);
     }
     else
     {
-        while (i < data->len_a + 1)
+        while (i < data->len_a)
         {
             rra(data);
+            write(1, "rra\n", 4);
             i++;
         }
-        pa(data);
-    }
-}
-
-void    make_chunck(t_data *data, int i)
-{
-    while (i < data->len)
-    {
-        if (data->stack_a[i] < data->value_chunck[j])
-        {
-            if (i < data->len_a / 2)
-                send_to_chunck(data, i, 0);
-            else
-                send_to_chunck(data, i, 1);
-        }
-        if ((data->stack_a[i] > data->value_chunck[data->chunck - j]) && (data->chunck - j != j))
-        {
-            if (i < data->len_a / 2)
-            {
-                while (i-- != 0)
-                    ra(data);
-                pa(data);
-                rb(data);
-            }
-            else
-            {
-                while (i < data->len_a + 1)
-                {
-                    rra(data);
-                    i++;
-                }
-                i = 0;
-                pa(data);
-                rb(data);
-            }
-        }
-        i++;
+        pb(data);
+        write(1, "pb\n", 3);
     }
 }
 
@@ -65,17 +33,32 @@ int     sort_in_chunck(t_data *data)
 
     i = 0;
     j = 0;
-    while (j < data->chunck - 1)
+    while (j < data->chunck)
     {
-        void    make_chunck(data, i);
-        j++;
+        while (i <= data->len_a)
+        {
+            if (data->stack_a[i] < data->value_chunck[j])
+            {
+                if (i <= data->len_a / 2)
+                    send_to_chunck(data, i, 0);
+                else
+                    send_to_chunck(data, i, 1);
+                i = -1;
+            }
+            i++;
+        }
         i = 0;
+        j++;
     }
+    return (0);
 }
 
 int     algo_ps(t_data *data)
 {
     sort_in_chunck(data);
+    sort_b(data);
+    // ft_print_tab(data->stack_a, data->len_a);
+    // ft_print_tab(data->stack_b, data->len_b);
 
     return (0);
 }

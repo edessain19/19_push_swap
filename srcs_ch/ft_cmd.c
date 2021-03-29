@@ -66,8 +66,8 @@ int     pb(t_data *data)
     int i;
 
     i = data->len_b;
-    if (!data->stack_a[0])
-        return (0);
+    // if (!data->stack_a[0])
+    //     return (0);
     while (i > 0)
     {
         data->stack_b[i] = data->stack_b[i - 1];

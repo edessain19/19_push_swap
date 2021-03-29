@@ -18,6 +18,7 @@ typedef struct		s_data
     int     debug;
     int     chunck;
     int     *value_chunck;
+    int     nb_max;
 }                   t_data;
 
 /*
@@ -41,6 +42,13 @@ int     get_nbr_chunck(int size);
 /*
 ** algo ps
 */
+
+int     algo_ps(t_data *data);
+int     sort_in_chunck(t_data *data);
+void    send_to_chunck(t_data *data, int i, int bool);
+int     sort_b(t_data *data);
+int     find_max(t_data *data);
+void    ft_push_b(t_data *data, int i, int bool);
 
 /*
 ** tools.c

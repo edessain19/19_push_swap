@@ -24,10 +24,10 @@ int     save_value_chunck(t_data *data, int *tmp)
     j = data->len_a / data->chunck;
     if (data->len_a % data->chunck)
         j++;
-    printf("j = %i\n", j);
+    // printf("j = %i\n", j);
     i = 0;
     k = 1;
-    data->value_chunck = malloc(sizeof(int) * (data->chunck - 1));
+    data->value_chunck = malloc(sizeof(int) * (data->chunck));
     if (data->value_chunck == NULL)
         return (-1);
     while (i < data->chunck - 1)
@@ -36,7 +36,8 @@ int     save_value_chunck(t_data *data, int *tmp)
         i++;
         k++;
     }
-    ft_print_tab(data->value_chunck, data->chunck - 1);
+    data->value_chunck[i] = tmp[data->len_a - 1];
+    // ft_print_tab(data->value_chunck, data->chunck - 1);
     return (0);
 }
 
@@ -59,7 +60,7 @@ int     quick_sort(t_data *data)
         i++;
     }
     i = 0;
-    printf("len_a = %i\n", data->len_a);
+    // printf("len_a = %i\n", data->len_a);
     while (i < data->len_a)
     {
         while (j < data->len_a)
@@ -77,7 +78,7 @@ int     quick_sort(t_data *data)
         i++;
         j = i + 1;
     }
-    ft_print_tab(tmp, data->len_a);
+    // ft_print_tab(tmp, data->len_a);
     save_value_chunck(data, tmp);
     return (0);
 }
