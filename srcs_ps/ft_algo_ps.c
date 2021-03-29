@@ -33,7 +33,7 @@ int     sort_in_chunck(t_data *data)
 
     i = 0;
     j = 0;
-    while (j < data->chunck)
+    while (j + 1 < data->chunck)
     {
         while (i <= data->len_a)
         {
@@ -45,10 +45,26 @@ int     sort_in_chunck(t_data *data)
                     send_to_chunck(data, i, 1);
                 i = -1;
             }
+            else if (data->stack_a[i] > data->value_chunck[j] && data->stack_a[i] < data->value_chunck[j + 1])
+            {
+                if (i <= data->len_a / 2)
+                {
+                    send_to_chunck(data, i, 0);
+                    rb(data);
+                    write(1, "rb\n", 1);
+                }
+                else
+                {
+                    send_to_chunck(data, i, 1);
+                    rb(data);
+                    write(1, "rb\n", 1);
+                }
+                i = -1;
+            }
             i++;
         }
         i = 0;
-        j++;
+        j += 2;
     }
     return (0);
 }
