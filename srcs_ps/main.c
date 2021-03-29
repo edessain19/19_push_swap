@@ -1,5 +1,7 @@
 # include "../include/push_swap.h"
 
+
+
 int     get_nbr_chunck(int size)
 {
     if (size < 99)
@@ -19,10 +21,16 @@ int     main(int argc, char **argv)
     init_struct(&data, argc);
     if (parsing(&data, argc, argv) < 0)
         return (-1);
-    ft_print_tab(data.stack_a, data.len);
+    // ft_print_tab(data.stack_a, data.len);
+    data.chunck = get_nbr_chunck(data.len);
+    quick_sort(&data);
     if (data.len <= 5)
         ft_small_batch(&data);
-    data.chunck = get_nbr_chunck(data.len);
-    ft_print_tab(data.stack_a, data.len);
+    else
+    {
+            algo_ps(&data);
+    }
+    
+    // ft_print_tab(data.stack_a, data.len);
     return (0);
 }

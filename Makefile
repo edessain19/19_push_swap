@@ -2,13 +2,14 @@ SRCS_CH = ./srcs_ch/main.c \
 		./srcs_ch/ft_cmd.c \
 		./srcs_ch/check_cmd.c \
 		./srcs_ch/tools.c \
-		./srcs_ch/check_list.c
+		./srcs_ch/quick_sort.c
 
 SRCS_PS = ./srcs_ps/main.c \
 		./srcs_ch/tools.c \
 		./srcs_ch/ft_cmd.c \
-		./srcs_ps/sort_nbr.c \
-		./srcs_ch/check_list.c \
+		./srcs_ps/sort_small_batch.c \
+		./srcs_ch/quick_sort.c \
+		./srcs_ps/ft_algo_ps.c \
 
 
 OBJS_CH	=	$(SRCS_CH:%.c=%.o)

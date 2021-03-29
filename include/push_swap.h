@@ -17,10 +17,11 @@ typedef struct		s_data
     int     len_b;
     int     debug;
     int     chunck;
+    int     *value_chunck;
 }                   t_data;
 
 /*
-** **********************Checker***************************************************
+** ********************** Checker ******************************************************
 */
 
 int     main(int argc, char **argv);
@@ -28,6 +29,18 @@ int     read_cmd(t_data *data);
 int     apply_cmd(t_data *data);
 int     check_cmd(t_data *data, int i);
 int     check_order(t_data *data);
+
+/*
+** ********************** Push Swap ***************************************************
+*/
+
+int     algo_ps(t_data *data);
+int     get_nbr_chunck(int size);
+
+
+/*
+** algo ps
+*/
 
 /*
 ** tools.c
@@ -77,6 +90,9 @@ int     ft_batch_2(t_data *data);
 */
 
 int     check_order_stack(t_data *data);
+int     quick_sort(t_data *data);
+int     save_value_chunck(t_data *data, int *tmp);
+
 
 
 
