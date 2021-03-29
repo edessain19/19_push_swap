@@ -58,7 +58,7 @@ int		check_digit(int argc, char **argv, int i);
 int     parsing(t_data *data, int argc, char **argv);
 int     check_parsing(t_data *data, int argc, char **argv);
 int     ft_parse_string(t_data *data, int argc, char **argv, int i);
-void    ft_free(t_data *data);
+void    ft_free_all(t_data *data);
 void    init_struct(t_data *data, int i);
 
 
@@ -108,6 +108,10 @@ int     save_value_chunck(t_data *data, int *tmp);
 
 void    ft_print_tab(int *tab, int len);
 void    ft_print_stack(t_data *data, char *cmd);
+void	ft_putnbr(int n);
+void	ft_putchar(char c);
+char	*ft_strjoin_free(char *s1, char *s2);
+
 
 
 

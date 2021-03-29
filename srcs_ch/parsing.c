@@ -54,7 +54,7 @@ int		ft_parse_string(t_data *data, int argc, char **argv, int i)
 		return (-1);
 	if (check_digit(argc, tab, 0))
 		return (-1);
-	i = 0;
+    i = 0;
 	while (i < data->len)
 	{
 		data->stack_a[i] = ft_atoi(tab[i]);
@@ -81,8 +81,8 @@ int		parsing(t_data *data, int argc, char **argv)
 		j++;
 	}
 	data->len = argc - i;
-	data->stack_a = malloc(sizeof(int) * data->len - 1);
-	data->stack_b = malloc(sizeof(int) * data->len - 1);
+	data->stack_a = malloc(sizeof(int) * data->len);
+	data->stack_b = malloc(sizeof(int) * data->len);
 	if (data->stack_a == NULL || data->stack_b == NULL)
 		return (-1);
 	j = 0;
@@ -95,6 +95,7 @@ int		parsing(t_data *data, int argc, char **argv)
 		j++;
 		data->len_a++;
 	}
+    // ft_print_tab(data->stack_a, data->len_a);
 	ft_bzero(data->stack_b, data->len);
 	return (0);
 }

@@ -87,5 +87,6 @@ int		quick_sort(t_data *data)
 		j = i + 1;
 	}
 	save_value_chunck(data, tmp);
+    free(tmp);
 	return (0);
 }

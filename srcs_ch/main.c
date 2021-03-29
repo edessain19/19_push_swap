@@ -21,11 +21,12 @@ int		read_cmd(t_data *data)
 	while (get_next_line(0, &line))
 	{
 		data->instruction = ft_strjoin(data->instruction, line);
-		data->instruction = ft_strjoin(data->instruction, " ");
+		data->instruction = ft_strjoin_free(data->instruction, " ");
 		free(line);
 		line = NULL;
 	}
 	data->tab_cmd = ft_split(data->instruction, ' ');
+    // free(data->instruction);
 	return (0);
 }
 
@@ -57,7 +58,9 @@ int		main(int argc, char **argv)
 		return (-1);
 	read_cmd(&data);
 	apply_cmd(&data);
-	// check_order(&data);
-	// ft_free(&data);
+	check_order(&data);
+    // ft_print_tab(data.stack_a, data.len_a);
+    // ft_print_tab(data.stack_b, data.len_b);
+	ft_free_all(&data);
 	return (0);
 }
