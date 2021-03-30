@@ -21,11 +21,16 @@ int		read_cmd(t_data *data)
 	while (get_next_line(0, &line))
 	{
 		data->instruction = ft_strjoin(data->instruction, line);
-		data->instruction = ft_strjoin_free(data->instruction, " ");
-		free(line);
+		if (data->instruction == NULL)
+            return (-1);
+        data->instruction = ft_strjoin_free(data->instruction, " ");
+		if (data->instruction == NULL)
+            return (-1);
+        free(line);
 		line = NULL;
 	}
-	data->tab_cmd = ft_split(data->instruction, ' ');
+	if (!(data->tab_cmd = ft_split(data->instruction, ' ')))
+        return (-1);
     // free(data->instruction);
 	return (0);
 }
@@ -37,8 +42,10 @@ int		apply_cmd(t_data *data)
 	i = 0;
 	while (data->tab_cmd[i])
 	{
-		if (check_cmd(data, i) < 0)
+		// check_cmd(data, i);
+        if (check_cmd(data, i) < 0)
 		{
+            printf("i = %i\ncmd = %s\n", i, data->tab_cmd[i]);
 			write(1, "Error\n", 6);
 			return (-1);
 		}
@@ -56,10 +63,12 @@ int		main(int argc, char **argv)
 	init_struct(&data, argc);
 	if (parsing(&data, argc, argv) < 0)
 		return (-1);
-	read_cmd(&data);
-	apply_cmd(&data);
+	if (read_cmd(&data) < 0)
+        return (-1);
+	if (apply_cmd(&data) < 0)
+        return (-1);
 	check_order(&data);
-    // ft_print_tab(data.stack_a, data.len_a);
+    ft_print_tab(data.stack_a, data.len_a);
     // ft_print_tab(data.stack_b, data.len_b);
 	ft_free_all(&data);
 	return (0);

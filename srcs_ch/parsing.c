@@ -33,6 +33,7 @@ int		check_parsing(t_data *data, int argc, char **argv)
 	i = 1;
 	if (argc < 2)
 		return (-1);
+    
 	if (!ft_strncmp(argv[1], "-v", 2))
 	{
 		data->debug = 1;
