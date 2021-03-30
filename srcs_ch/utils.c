@@ -26,10 +26,10 @@ void	ft_putnbr(int n)
 void	ft_print_stack(t_data *data, char *cmd)
 {
 	int		i;
-    int     c;
+	int		c;
 
 	i = 0;
-    c = ' ';
+	c = ' ';
 	ft_putstr_fd(cmd, 1);
 	write(1, "stack a = ", 10);
 	while (i < data->len_a)
@@ -43,32 +43,11 @@ void	ft_print_stack(t_data *data, char *cmd)
 	write(1, "stack b = ", 10);
 	while (i < data->len_b)
 	{
-        ft_putnbr(data->stack_b[i]);
+		ft_putnbr(data->stack_b[i]);
 		ft_putchar(c);
 		i++;
 	}
 	ft_putchar('\n');
-}
-
-void    ft_free_all(t_data *data)
-{
-    free(data->stack_a);
-    free(data->stack_b);
-    free(data->value_chunck);
-    ft_free_tab(data->tab_cmd);
-}
-
-void    ft_free_tab(char **tab)
-{
-    int i;
-
-    i = 0;
-    while (tab && tab[i])
-    {
-        free(tab[i]);
-        i++;
-    }
-    free(tab);
 }
 
 void	ft_print_tab(int *tab, int len)
@@ -90,10 +69,11 @@ char	*ft_strjoin_free(char *s1, char *s2)
 	int		i;
 	int		j;
 	char	*dest;
+
 	if (s2 == NULL || s1 == NULL)
 		return (NULL);
-	if (!(dest = malloc((ft_strlen((char*)s1) +
-		ft_strlen((char*)s2)) * sizeof(char*))))
+	dest = malloc((ft_strlen(s1) + ft_strlen(s2)) * sizeof(char *));
+	if (dest == NULL)
 		return (NULL);
 	i = 0;
 	j = 0;

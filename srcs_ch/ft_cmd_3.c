@@ -1,44 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_cmd_3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edessain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/30 17:20:11 by edessain          #+#    #+#             */
-/*   Updated: 2021/03/30 17:20:53 by edessain         ###   ########.fr       */
+/*   Created: 2021/03/29 17:48:46 by edessain          #+#    #+#             */
+/*   Updated: 2021/03/30 16:54:10 by edessain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	get_nbr_chunck(int size)
+int	rrr(t_data *data)
 {
-	if (size < 10)
-		return (2);
-	if (size < 99)
-		return (4);
-	else if (size < 495)
-		return (8);
-	else
-		return (18);
-}
-
-int	main(int argc, char **argv)
-{
-	t_data	data;
-	int		i;
-
-	i = 0;
-	init_struct(&data);
-	if (parsing(&data, argc, argv) < 0)
-		return (-1);
-	data.chunck = get_nbr_chunck(data.len);
-	quick_sort(&data);
-	if (data.len <= 5)
-		ft_small_batch(&data);
-	else
-		algo_ps(&data);
-	ft_free_all(&data);
+	rra(data);
+	rrb(data);
 	return (0);
 }

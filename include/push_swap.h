@@ -60,7 +60,7 @@ int     check_parsing(t_data *data, int argc, char **argv);
 int     ft_parse_string(t_data *data, int argc, char **argv, int i);
 void    ft_free_all(t_data *data);
 void    ft_free_tab(char **tab);
-void    init_struct(t_data *data, int i);
+void    init_struct(t_data *data);
 
 
 /*

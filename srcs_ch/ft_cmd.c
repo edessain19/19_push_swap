@@ -98,23 +98,3 @@ int	pb(t_data *data)
 		ft_print_stack(data, "---pb---\n");
 	return (0);
 }
-
-int	rrb(t_data *data)
-{
-	int		i;
-	int		tmp;
-
-	i = data->len_b;
-	tmp = data->stack_b[i - 1];
-	if (data->len_b < 2)
-		return (0);
-	while (i > 0)
-	{
-		data->stack_b[i] = data->stack_b[i - 1];
-		i--;
-	}
-	data->stack_b[i] = tmp;
-	if (data->debug == 1)
-		ft_print_stack(data, "---rrb---\n");
-	return (0);
-}

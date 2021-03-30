@@ -6,15 +6,14 @@
 /*   By: edessain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:02:26 by edessain          #+#    #+#             */
-/*   Updated: 2021/03/30 16:09:57 by edessain         ###   ########.fr       */
+/*   Updated: 2021/03/30 16:57:47 by edessain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	init_struct(t_data *data, int i)
+void	init_struct(t_data *data)
 {
-	i = 1;
 	data->instruction = NULL;
 	data->tab_cmd = NULL;
 	data->len = 0;
