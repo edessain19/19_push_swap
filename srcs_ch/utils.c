@@ -52,17 +52,22 @@ void	ft_print_stack(t_data *data, char *cmd)
 
 void    ft_free_all(t_data *data)
 {
+    free(data->stack_a);
+    free(data->stack_b);
+    ft_free_tab(data->tab_cmd);
+}
+
+void    ft_free_tab(char **tab)
+{
     int i;
 
     i = 0;
-    free(data->stack_a);
-    free(data->stack_b);
-    while (data->tab_cmd && data->tab_cmd[i])
+    while (tab && tab[i])
     {
-        free(data->tab_cmd[i]);
+        free(tab[i]);
         i++;
     }
-    free(data->tab_cmd);
+    free(tab);
 }
 
 void	ft_print_tab(int *tab, int len)

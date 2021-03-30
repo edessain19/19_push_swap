@@ -12,7 +12,7 @@
 
 #include "../include/libft.h"
 
-int		ft_free(char **string, int nb)
+int		ft_free_g(char **string, int nb)
 {
 	if (*string)
 	{
@@ -72,18 +72,18 @@ int		ft_read(int fd, char **line, char *rest)
 	ret = 0;
 	if (rest != NULL)
 		if ((*line = ft_strndup_g(rest, '\0')) == NULL)
-			return (ft_free(&rest, -1));
+			return (ft_free_g(&rest, -1));
 	if (rest == NULL)
 		if ((*line = ft_strndup_g("", '\0')) == NULL)
-			return (-1);
+			return (ft_free_g(line, -1));
 	while ((ft_strchr_g(*line, '\n') == NULL) &&
 			(ret = read(fd, buf, 50)) > 0)
 	{
 		tmp = *line;
 		buf[ret] = '\0';
 		if ((*line = ft_strjoin(*line, buf)) == NULL)
-			return (ft_free(&rest, -1));
-		ft_free(&tmp, 1);
+			return (ft_free_g(&rest, -1));
+		ft_free_g(&tmp, 1);
 	}
 	return (ret);
 }
@@ -97,16 +97,16 @@ int		get_next_line(int fd, char **line)
 	if (fd < 0 || 50 <= 0 || line == NULL)
 		return (-1);
 	if ((ret = ft_read(fd, line, rest)) == -1)
-		return (ft_free(&rest, -1));
+		return (ft_free_g(&rest, -1));
 	if (rest != NULL)
-		ft_free(&rest, 1);
+		ft_free_g(&rest, 1);
 	if ((rest = ft_strndup_g(ft_strchr_g(*line, '\n'), '\0')) == NULL)
-		return (ft_free(&rest, -1));
+		return (ft_free_g(&rest, -1));
 	if (ft_strchr_g(*line, '\n') == NULL)
-		return (ft_free(&rest, 0));
+		return (ft_free_g(&rest, 0));
 	tmp = *line;
 	if ((*line = ft_strndup_g(*line, '\n')) == NULL)
-		return (ft_free(&rest, -1));
+		return (ft_free_g(&rest, -1));
 	free(tmp);
 	tmp = NULL;
 	return (1);

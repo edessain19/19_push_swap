@@ -17,10 +17,10 @@ int		read_cmd(t_data *data)
 	char	*line;
 
 	line = "";
-	data->instruction = "";
+	data->instruction = ft_strdup("");
 	while (get_next_line(0, &line))
 	{
-		data->instruction = ft_strjoin(data->instruction, line);
+		data->instruction = ft_strjoin_free(data->instruction, line);
 		if (data->instruction == NULL)
             return (-1);
         data->instruction = ft_strjoin_free(data->instruction, " ");
@@ -29,9 +29,13 @@ int		read_cmd(t_data *data)
         free(line);
 		line = NULL;
 	}
+    free(line);
 	if (!(data->tab_cmd = ft_split(data->instruction, ' ')))
+    {
+        free(data->instruction);
         return (-1);
-    // free(data->instruction);
+    }
+    free(data->instruction);
 	return (0);
 }
 
