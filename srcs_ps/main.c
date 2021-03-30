@@ -7,9 +7,11 @@ int    get_nbr_chunck(int size)
 	if (size < 99)
 		return (4);
 	else if (size < 495)
-		return (6);
+		return (8);
+    else if (size < 1000)
+        return (18);
     else
-        return (11);
+        return (20);
 }
 
 int		main(int argc, char **argv)

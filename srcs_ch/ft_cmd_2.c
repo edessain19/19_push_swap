@@ -6,20 +6,20 @@
 /*   By: edessain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 17:48:46 by edessain          #+#    #+#             */
-/*   Updated: 2021/03/29 17:54:53 by edessain         ###   ########.fr       */
+/*   Updated: 2021/03/30 15:29:42 by edessain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int		rr(t_data *data)
+int	rr(t_data *data)
 {
 	ra(data);
 	rb(data);
 	return (0);
 }
 
-int		ra(t_data *data)
+int	ra(t_data *data)
 {
 	int		i;
 	int		j;
@@ -28,6 +28,8 @@ int		ra(t_data *data)
 	i = 0;
 	j = data->len_a;
 	tmp = data->stack_a[i];
+	if (j < 2)
+		return (0);
 	while (i + 1 < j)
 	{
 		data->stack_a[i] = data->stack_a[i + 1];
@@ -39,7 +41,7 @@ int		ra(t_data *data)
 	return (0);
 }
 
-int		rb(t_data *data)
+int	rb(t_data *data)
 {
 	int		i;
 	int		j;
@@ -48,6 +50,8 @@ int		rb(t_data *data)
 	i = 0;
 	j = data->len_b;
 	tmp = data->stack_b[i];
+	if (j < 2)
+		return (0);
 	while (i + 1 < j)
 	{
 		data->stack_b[i] = data->stack_b[i + 1];
@@ -59,21 +63,23 @@ int		rb(t_data *data)
 	return (0);
 }
 
-int		rrr(t_data *data)
+int	rrr(t_data *data)
 {
 	rra(data);
 	rrb(data);
 	return (0);
 }
 
-int		rra(t_data *data)
+int	rra(t_data *data)
 {
 	int		i;
 	int		tmp;
 
 	i = data->len_a;
 	tmp = data->stack_a[i - 1];
-	while(i > 0)
+	if (i < 2)
+		return (0);
+	while (i > 0)
 	{
 		data->stack_a[i] = data->stack_a[i - 1];
 		i--;

@@ -6,7 +6,7 @@
 /*   By: edessain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:02:26 by edessain          #+#    #+#             */
-/*   Updated: 2021/03/29 18:02:43 by edessain         ###   ########.fr       */
+/*   Updated: 2021/03/30 16:09:57 by edessain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,13 @@ void	init_struct(t_data *data, int i)
 	data->nb_max = 0;
 }
 
-int		check_parsing(t_data *data, int argc, char **argv)
+int	check_parsing(t_data *data, int argc, char **argv)
 {
 	int		i;
 
 	i = 1;
 	if (argc < 2)
 		return (-1);
-    
 	if (!ft_strncmp(argv[1], "-v", 2))
 	{
 		data->debug = 1;
@@ -42,7 +41,7 @@ int		check_parsing(t_data *data, int argc, char **argv)
 	return (i);
 }
 
-int		ft_parse_string(t_data *data, int argc, char **argv, int i)
+int	ft_parse_string(t_data *data, int argc, char **argv, int i)
 {
 	char	**tab;
 
@@ -52,16 +51,16 @@ int		ft_parse_string(t_data *data, int argc, char **argv, int i)
 	data->stack_a = malloc(sizeof(int) * data->len - 1);
 	data->stack_b = malloc(sizeof(int) * data->len - 1);
 	if (data->stack_a == NULL || data->stack_b == NULL)
-    {
-        ft_free_tab(tab);
-        return (-1);
-    }
-    if (check_digit(argc, tab, 0))
 	{
-        ft_free_tab(tab);
-        return (-1);
-    }
-    i = 0;
+		ft_free_tab(tab);
+		return (-1);
+	}
+	if (check_digit(argc, tab, 0))
+	{
+		ft_free_tab(tab);
+		return (-1);
+	}
+	i = 0;
 	while (i < data->len)
 	{
 		data->stack_a[i] = ft_atoi(tab[i]);
@@ -69,11 +68,11 @@ int		ft_parse_string(t_data *data, int argc, char **argv, int i)
 		data->len_a++;
 	}
 	ft_bzero(data->stack_b, data->len - 1);
-    ft_free_tab(tab);
+	ft_free_tab(tab);
 	return (0);
 }
 
-int		parsing(t_data *data, int argc, char **argv)
+int	parsing(t_data *data, int argc, char **argv)
 {
 	int		i;
 	int		j;
@@ -103,12 +102,11 @@ int		parsing(t_data *data, int argc, char **argv)
 		j++;
 		data->len_a++;
 	}
-    // ft_print_tab(data->stack_a, data->len_a);
 	ft_bzero(data->stack_b, data->len);
 	return (0);
 }
 
-int		check_digit(int argc, char **argv, int i)
+int	check_digit(int argc, char **argv, int i)
 {
 	int		j;
 

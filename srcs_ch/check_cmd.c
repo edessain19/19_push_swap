@@ -6,13 +6,13 @@
 /*   By: edessain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 17:45:01 by edessain          #+#    #+#             */
-/*   Updated: 2021/03/29 17:46:21 by edessain         ###   ########.fr       */
+/*   Updated: 2021/03/30 15:17:15 by edessain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int		check_cmd(t_data *data, int i)
+int	check_cmd(t_data *data, int i)
 {
 	if (!ft_strncmp(data->tab_cmd[i], "ss", 3))
 		ss(data);
@@ -41,9 +41,9 @@ int		check_cmd(t_data *data, int i)
 	return (0);
 }
 
-int		check_order(t_data *data)
+int	check_order(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < data->len_a - 1)

@@ -6,13 +6,13 @@
 /*   By: edessain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 17:55:09 by edessain          #+#    #+#             */
-/*   Updated: 2021/03/29 17:57:24 by edessain         ###   ########.fr       */
+/*   Updated: 2021/03/30 16:15:46 by edessain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int		check_order_stack(t_data *data)
+int	check_order_stack(t_data *data)
 {
 	int		i;
 
@@ -26,7 +26,7 @@ int		check_order_stack(t_data *data)
 	return (1);
 }
 
-int		save_value_chunck(t_data *data, int *tmp)
+int	save_value_chunck(t_data *data, int *tmp)
 {
 	int		i;
 	int		j;
@@ -50,7 +50,7 @@ int		save_value_chunck(t_data *data, int *tmp)
 	return (0);
 }
 
-int		quick_sort(t_data *data)
+int	quick_sort(t_data *data)
 {
 	int		*tmp;
 	int		i;
@@ -87,6 +87,6 @@ int		quick_sort(t_data *data)
 		j = i + 1;
 	}
 	save_value_chunck(data, tmp);
-    free(tmp);
+	free(tmp);
 	return (0);
 }
