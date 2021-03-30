@@ -23,7 +23,6 @@ int		main(int argc, char **argv)
         return (-1);
     data.chunck = get_nbr_chunck(data.len);
     quick_sort(&data);
-    write(1, "ok\n", 3);
     if (data.len <= 5)
         ft_small_batch(&data);
     else
