@@ -27,7 +27,7 @@ int		main(int argc, char **argv)
         ft_small_batch(&data);
     else
         algo_ps(&data);
-    ft_print_tab(data.stack_a, data.len_a);
-    ft_print_tab(data.value_chunck, data.chunck);
+    // ft_print_tab(data.stack_a, data.len_a);
+    // ft_print_tab(data.value_chunck, data.chunck);
     return (0);
 }

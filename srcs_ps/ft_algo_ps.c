@@ -26,6 +26,21 @@ void    send_to_chunck(t_data *data, int i, int bool)
     }
 }
 
+int     opti_rr(t_data *data, int i, int j)
+{
+    if (data->stack_a[i] > data->value_chunck[j + 1])
+    {
+            rr(data);
+            write(1, "rr\n", 3);
+    }
+    else
+    {
+        rb(data);
+        write(1, "rb\n", 3);
+    }
+    return (0);
+}
+
 int     sort_in_chunck(t_data *data)
 {
     int i;
@@ -37,7 +52,8 @@ int     sort_in_chunck(t_data *data)
     {
         while (i <= data->len_a)
         {
-            if (data->stack_a[i] < data->value_chunck[j])
+            if ((j != data->chunck && data->stack_a[i] <= data->value_chunck[j]) || 
+                (j == data->chunck && data->stack_a[i] < data->value_chunck[j]))
             {
                 if (i <= data->len_a / 2)
                     send_to_chunck(data, i, 0);
@@ -51,15 +67,11 @@ int     sort_in_chunck(t_data *data)
                 // ft_putnbr(data->value_chunck[j + 1]);
                 // write(1, "\n---debug---\n", 13);
                 if (i <= data->len_a / 2)
-                {
                     send_to_chunck(data, i, 0);
-                    rb(data);
-                }
                 else
-                {
                     send_to_chunck(data, i, 1);
-                    rb(data);
-                }
+                // opti_rr(data, i, j);
+                rb(data);
                 write(1, "rb\n", 3);
                 i = -1;
             }

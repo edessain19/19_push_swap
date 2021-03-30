@@ -68,8 +68,8 @@ int		main(int argc, char **argv)
 	if (apply_cmd(&data) < 0)
         return (-1);
 	check_order(&data);
-    ft_print_tab(data.stack_a, data.len_a);
-    ft_print_tab(data.stack_b, data.len_b);
+    // ft_print_tab(data.stack_a, data.len_a);
+    // ft_print_tab(data.stack_b, data.len_b);
 	ft_free_all(&data);
 	return (0);
 }
