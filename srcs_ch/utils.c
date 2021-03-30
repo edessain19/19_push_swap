@@ -26,26 +26,28 @@ void	ft_putnbr(int n)
 void	ft_print_stack(t_data *data, char *cmd)
 {
 	int		i;
+    int     c;
 
 	i = 0;
+    c = ' ';
 	ft_putstr_fd(cmd, 1);
 	write(1, "stack a = ", 10);
-	while (i < data->len_a - 1)
+	while (i < data->len_a)
 	{
 		ft_putnbr(data->stack_a[i]);
-		write(i, " ", 1);
+		ft_putchar(c);
 		i++;
 	}
-	write(1, "\n", 1);
+	ft_putchar('\n');
 	i = 0;
 	write(1, "stack b = ", 10);
-	while (i < data->len_b - 1)
+	while (i < data->len_b)
 	{
         ft_putnbr(data->stack_b[i]);
-		write(i, " ", 1);
+		ft_putchar(c);
 		i++;
 	}
-	write(1, "\n", 1);
+	ft_putchar('\n');
 }
 
 void    ft_free_all(t_data *data)
