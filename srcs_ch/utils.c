@@ -54,6 +54,7 @@ void    ft_free_all(t_data *data)
 {
     free(data->stack_a);
     free(data->stack_b);
+    free(data->value_chunck);
     ft_free_tab(data->tab_cmd);
 }
 

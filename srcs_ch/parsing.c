@@ -68,7 +68,7 @@ int		ft_parse_string(t_data *data, int argc, char **argv, int i)
 		i++;
 		data->len_a++;
 	}
-	ft_bzero(data->stack_b, data->len);
+	ft_bzero(data->stack_b, data->len - 1);
     ft_free_tab(tab);
 	return (0);
 }
