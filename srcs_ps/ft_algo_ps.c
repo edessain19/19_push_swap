@@ -57,7 +57,7 @@ int     sort_in_chunck(t_data *data)
                     send_to_chunck(data, i, 1);
                     rb(data);
                 }
-                write(1, "rb\n", 1);
+                write(1, "rb\n", 3);
                 i = -1;
             }
             i++;
