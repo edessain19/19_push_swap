@@ -37,7 +37,7 @@ int     sort_in_chunck(t_data *data)
     {
         while (i <= data->len_a)
         {
-            if ((j != data->chunck && data->stack_a[i] <= data->value_chunck[j]) || 
+            if ((j != data->chunck && data->stack_a[i] <= data->value_chunck[j]) ||
                 (j == data->chunck && data->stack_a[i] < data->value_chunck[j]))
             {
                 if (i <= data->len_a / 2)
@@ -46,7 +46,7 @@ int     sort_in_chunck(t_data *data)
                     send_to_chunck(data, i, 1);
                 i = -1;
             }
-            else if (j + 1 < data->chunck && (data->stack_a[i] < data->value_chunck[j + 1]))
+            else if (j + 1 <= data->chunck && (data->stack_a[i] < data->value_chunck[j + 1]))
             {
                 if (i <= data->len_a / 2)
                     send_to_chunck(data, i, 0);

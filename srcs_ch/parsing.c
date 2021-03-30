@@ -46,14 +46,17 @@ int		ft_parse_string(t_data *data, int argc, char **argv, int i)
 {
 	char	**tab;
 
-	data->stack_a = malloc(sizeof(int) * data->len - 1);
-	data->stack_b = malloc(sizeof(int) * data->len - 1);
-	if (data->stack_a == NULL || data->stack_b == NULL)
-		return (-1);
 	tab = ft_split(argv[i], ' ');
 	while (tab[data->len])
 		data->len++;
-	if (check_digit(argc, tab, 0))
+	data->stack_a = malloc(sizeof(int) * data->len - 1);
+	data->stack_b = malloc(sizeof(int) * data->len - 1);
+	if (data->stack_a == NULL || data->stack_b == NULL)
+    {
+        ft_free_tab(tab);
+        return (-1);
+    }
+    if (check_digit(argc, tab, 0))
 	{
         ft_free_tab(tab);
         return (-1);

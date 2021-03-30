@@ -3,7 +3,7 @@
 int    get_nbr_chunck(int size)
 {
     if (size < 10)
-        return (3);
+        return (2);
 	if (size < 99)
 		return (4);
 	else if (size < 495)
@@ -23,11 +23,12 @@ int		main(int argc, char **argv)
         return (-1);
     data.chunck = get_nbr_chunck(data.len);
     quick_sort(&data);
+    write(1, "ok\n", 3);
     if (data.len <= 5)
         ft_small_batch(&data);
     else
         algo_ps(&data);
-    // ft_print_tab(data.stack_a, data.len_a);
+    ft_print_tab(data.stack_a, data.len_a);
     // ft_print_tab(data.value_chunck, data.chunck);
     return (0);
 }
