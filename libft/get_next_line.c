@@ -6,13 +6,13 @@
 /*   By: edessain <edessain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 11:14:50 by edessain          #+#    #+#             */
-/*   Updated: 2021/02/08 11:14:52 by edessain         ###   ########.fr       */
+/*   Updated: 2021/03/31 12:29:33 by edessain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "include/libft.h"
 
-int		ft_free_g(char **string, int nb)
+int	ft_free_g(char **string, int nb)
 {
 	if (*string)
 	{
@@ -52,7 +52,8 @@ char	*ft_strndup_g(const char *str, const char c)
 		return (ft_strndup_g("", '\0'));
 	while (str[j] != c)
 		j++;
-	if (!(src = malloc((j + 1) * sizeof(*src))))
+	src = malloc((j + 1) * sizeof(*src));
+	if (src == NULL)
 		return (NULL);
 	while (str[i] != '\0' && str[i] != c)
 	{
@@ -63,32 +64,34 @@ char	*ft_strndup_g(const char *str, const char c)
 	return (src);
 }
 
-int		ft_read(int fd, char **line, char *rest)
+int	ft_read(int fd, char **line, char *rest, int ret)
 {
-	int			ret;
 	char		buf[50 + 1];
-	char		*tmp;
 
-	ret = 0;
 	if (rest != NULL)
-		if ((*line = ft_strndup_g(rest, '\0')) == NULL)
-			return (ft_free_g(&rest, -1));
-	if (rest == NULL)
-		if ((*line = ft_strndup_g("", '\0')) == NULL)
-			return (ft_free_g(line, -1));
-	while ((ft_strchr_g(*line, '\n') == NULL) &&
-			(ret = read(fd, buf, 50)) > 0)
 	{
-		tmp = *line;
-		buf[ret] = '\0';
-		if ((*line = ft_strjoin(*line, buf)) == NULL)
+		*line = ft_strndup_g(rest, '\0');
+		if (*line == NULL)
 			return (ft_free_g(&rest, -1));
-		ft_free_g(&tmp, 1);
+	}
+	if (rest == NULL)
+	{
+		*line = ft_strndup_g("", '\0');
+		if (*line == NULL)
+			return (ft_free_g(line, -1));
+	}
+	while ((ft_strchr_g(*line, '\n') == NULL)
+		&& (ret = read(fd, buf, 50)) > 0)
+	{
+		buf[ret] = '\0';
+		*line = ft_strjoin_free(*line, buf);
+		if (*line == NULL)
+			return (ft_free_g(&rest, -1));
 	}
 	return (ret);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	int			ret;
 	static char	*rest = NULL;
@@ -96,16 +99,19 @@ int		get_next_line(int fd, char **line)
 
 	if (fd < 0 || 50 <= 0 || line == NULL)
 		return (-1);
-	if ((ret = ft_read(fd, line, rest)) == -1)
+	ret = ft_read(fd, line, rest, 0);
+	if (ret == -1)
 		return (ft_free_g(&rest, -1));
 	if (rest != NULL)
 		ft_free_g(&rest, 1);
-	if ((rest = ft_strndup_g(ft_strchr_g(*line, '\n'), '\0')) == NULL)
+	rest = ft_strndup_g(ft_strchr_g(*line, '\n'), '\0');
+	if (rest == NULL)
 		return (ft_free_g(&rest, -1));
 	if (ft_strchr_g(*line, '\n') == NULL)
 		return (ft_free_g(&rest, 0));
 	tmp = *line;
-	if ((*line = ft_strndup_g(*line, '\n')) == NULL)
+	*line = ft_strndup_g(*line, '\n');
+	if (*line == NULL)
 		return (ft_free_g(&rest, -1));
 	free(tmp);
 	tmp = NULL;

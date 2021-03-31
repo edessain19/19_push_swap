@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edessain <edessain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/08 11:09:07 by edessain          #+#    #+#             */
-/*   Updated: 2021/02/08 11:09:08 by edessain         ###   ########.fr       */
+/*   Created: 2021/02/08 11:11:57 by edessain          #+#    #+#             */
+/*   Updated: 2021/02/08 11:11:57 by edessain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "include/libft.h"
 
-void	ft_lstadd_back(t_list **alst, t_list *new)
+void	ft_putstr_fd(char *s, int fd)
 {
-	t_list	*tmp;
-
-	if (alst && *alst && new)
-	{
-		tmp = *alst;
-		while (new && tmp && tmp->next)
-		{
-			tmp = tmp->next;
-		}
-		tmp->next = new;
-	}
-	else if (alst)
-	{
-		*alst = new;
-	}
+	write(fd, s, ft_strlen(s));
 }

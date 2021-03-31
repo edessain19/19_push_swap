@@ -6,13 +6,13 @@
 /*   By: edessain <edessain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 11:12:04 by edessain          #+#    #+#             */
-/*   Updated: 2021/02/08 11:12:04 by edessain         ###   ########.fr       */
+/*   Updated: 2021/03/31 14:43:47 by edessain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "include/libft.h"
 
-static char		**ft_megafree(char **tab, int y)
+static char	**ft_megafree(char **tab, int y)
 {
 	while (--y >= 0)
 		free(tab[y]);
@@ -20,7 +20,7 @@ static char		**ft_megafree(char **tab, int y)
 	return (NULL);
 }
 
-static int		ft_len_to_sep(char const *str, char c)
+static int	ft_len_to_sep(char const *str, char c)
 {
 	int		i;
 
@@ -30,11 +30,13 @@ static int		ft_len_to_sep(char const *str, char c)
 	return (i);
 }
 
-static int		ft_count_words(char const *str, char c)
+static int	ft_count_words(char const *str, char c)
 {
-	int count;
-	int pos;
+	int	count;
+	int	pos;
 
+	if (str == NULL)
+		return (0);
 	count = 1;
 	if (str[0] == c)
 		count = 0;
@@ -48,13 +50,14 @@ static int		ft_count_words(char const *str, char c)
 	return (count);
 }
 
-static char		*ft_tmp_str(const char *str, char c)
+static char	*ft_tmp_str(const char *str, char c)
 {
 	int		i;
 	char	*tmp;
 
 	i = 0;
-	if ((tmp = malloc(sizeof(char) * (ft_len_to_sep(str, c) + 1))) != 0)
+	tmp = malloc(sizeof(char) * (ft_len_to_sep(str, c) + 1));
+	if (tmp)
 	{
 		while (str[i] != c && str[i] != '\0')
 		{
@@ -67,7 +70,7 @@ static char		*ft_tmp_str(const char *str, char c)
 	return (NULL);
 }
 
-char			**ft_split(char const *str, char c)
+char	**ft_split(char const *str, char c)
 {
 	int		i;
 	int		y;
@@ -75,15 +78,15 @@ char			**ft_split(char const *str, char c)
 
 	i = 0;
 	y = 0;
-	if (str == NULL)
-		return (NULL);
-	if (!(split = malloc(sizeof(char *) * (ft_count_words(str, c) + 1))))
+	split = malloc(sizeof(char *) * (ft_count_words(str, c) + 1));
+	if (str == NULL || split == NULL)
 		return (NULL);
 	while (str[i] != '\0')
 	{
 		if (str[i] != c)
 		{
-			if (!(split[y] = ft_tmp_str(&str[i], c)))
+			split[y] = ft_tmp_str(&str[i], c);
+			if (!split[y])
 				return (ft_megafree(split, y));
 			i = i + ft_len_to_sep(&str[i], c);
 			y++;
