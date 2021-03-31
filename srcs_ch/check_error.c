@@ -57,11 +57,16 @@ int	check_digit(int argc, char **argv, int i)
 	int		j;
 
 	j = 0;
-	while (i < argc)
+	argc = 0;
+	while (argv[i])
 	{
 		while (argv[i][j])
 		{
-			if (!ft_isdigit(argv[i][j]))
+			while (argv[i][j] == ' ')
+				j++;
+			if (argv[i][j] == '-')
+				j++;
+			if (ft_isdigit(argv[i][j]))
 				return (-1);
 			j++;
 		}

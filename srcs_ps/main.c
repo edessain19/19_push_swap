@@ -36,7 +36,6 @@ int	main(int argc, char **argv)
 	data.chunck = get_nbr_chunck(data.len);
 	if (quick_sort(&data) < 0)
 		return (ft_error(&data));
-	printf("len = %i\n", data.len);
 	if (data.len <= 5)
 		ft_small_batch(&data);
 	else

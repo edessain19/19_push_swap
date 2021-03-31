@@ -38,6 +38,12 @@ void	send_to_chunck(t_data *data, int i, int bool)
 	}
 }
 
+int	dort_from_above(t_data *data)
+{
+
+	
+}
+
 int	sort_in_chunck(t_data *data)
 {
 	int		i;

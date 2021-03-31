@@ -17,11 +17,11 @@ int	malloc_stack(t_data *data, int argc, char **argv, int i)
 	data->stack_a = malloc(sizeof(int) * data->len);
 	data->stack_b = malloc(sizeof(int) * data->len);
 	if (data->stack_a == NULL || data->stack_b == NULL)
-		return (0);
+		return (-1);
 	if (check_digit(argc, argv, i) < 0)
 		return (-1);
 	ft_bzero(data->stack_b, data->len);
-	return (1);
+	return (0);
 }
 
 int	ft_parse_string(t_data *data, int argc, char **argv, int i)
@@ -31,7 +31,7 @@ int	ft_parse_string(t_data *data, int argc, char **argv, int i)
 	tab = ft_split(argv[i], ' ');
 	while (tab[data->len])
 		data->len++;
-	if (!malloc_stack(data, argc, tab, 0))
+	if (malloc_stack(data, argc, argv, i) < 0)
 	{
 		ft_free_tab(tab);
 		return (-1);
@@ -63,7 +63,7 @@ int	parsing(t_data *data, int argc, char **argv, int j)
 		j++;
 	}
 	data->len = argc - i;
-	if (!malloc_stack(data, argc, argv, i))
+	if (malloc_stack(data, argc, argv, i) < 0)
 		return (-1);
 	j = 0;
 	while (j < data->len)
