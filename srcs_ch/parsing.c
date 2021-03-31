@@ -12,32 +12,16 @@
 
 #include "../include/push_swap.h"
 
-void	init_struct(t_data *data)
+int	malloc_stack(t_data *data, int argc, char **argv, int i)
 {
-	data->instruction = NULL;
-	data->tab_cmd = NULL;
-	data->len = 0;
-	data->debug = 0;
-	data->len_a = 0;
-	data->len_b = 0;
-	data->chunck = 0;
-	data->value_chunck = NULL;
-	data->nb_max = 0;
-}
-
-int	check_parsing(t_data *data, int argc, char **argv)
-{
-	int		i;
-
-	i = 1;
-	if (argc < 2)
+	data->stack_a = malloc(sizeof(int) * data->len);
+	data->stack_b = malloc(sizeof(int) * data->len);
+	if (data->stack_a == NULL || data->stack_b == NULL)
+		return (0);
+	if (check_digit(argc, argv, i) < 0)
 		return (-1);
-	if (!ft_strncmp(argv[1], "-v", 2))
-	{
-		data->debug = 1;
-		i = 2;
-	}
-	return (i);
+	ft_bzero(data->stack_b, data->len);
+	return (1);
 }
 
 int	ft_parse_string(t_data *data, int argc, char **argv, int i)
@@ -47,14 +31,7 @@ int	ft_parse_string(t_data *data, int argc, char **argv, int i)
 	tab = ft_split(argv[i], ' ');
 	while (tab[data->len])
 		data->len++;
-	data->stack_a = malloc(sizeof(int) * data->len - 1);
-	data->stack_b = malloc(sizeof(int) * data->len - 1);
-	if (data->stack_a == NULL || data->stack_b == NULL)
-	{
-		ft_free_tab(tab);
-		return (-1);
-	}
-	if (check_digit(argc, tab, 0))
+	if (!malloc_stack(data, argc, tab, 0))
 	{
 		ft_free_tab(tab);
 		return (-1);
@@ -63,20 +40,19 @@ int	ft_parse_string(t_data *data, int argc, char **argv, int i)
 	while (i < data->len)
 	{
 		data->stack_a[i] = ft_atoi(tab[i]);
+		if (data->stack_a[i] > INT_MAX)
+			return (-1);
 		i++;
 		data->len_a++;
 	}
-	ft_bzero(data->stack_b, data->len - 1);
 	ft_free_tab(tab);
 	return (0);
 }
 
-int	parsing(t_data *data, int argc, char **argv)
+int	parsing(t_data *data, int argc, char **argv, int j)
 {
 	int		i;
-	int		j;
 
-	j = 0;
 	i = check_parsing(data, argc, argv);
 	if (i == -1)
 		return (-1);
@@ -87,39 +63,17 @@ int	parsing(t_data *data, int argc, char **argv)
 		j++;
 	}
 	data->len = argc - i;
-	data->stack_a = malloc(sizeof(int) * data->len);
-	data->stack_b = malloc(sizeof(int) * data->len);
-	if (data->stack_a == NULL || data->stack_b == NULL)
+	if (!malloc_stack(data, argc, argv, i))
 		return (-1);
 	j = 0;
-	if (check_digit(argc, argv, i))
-		return (-1);
 	while (j < data->len)
 	{
 		data->stack_a[j] = ft_atoi(argv[i]);
+		if (data->stack_a[i] > INT_MAX)
+			return (-1);
 		i++;
 		j++;
 		data->len_a++;
-	}
-	ft_bzero(data->stack_b, data->len);
-	return (0);
-}
-
-int	check_digit(int argc, char **argv, int i)
-{
-	int		j;
-
-	j = 0;
-	while (i < argc)
-	{
-		while (argv[i][j])
-		{
-			if (!ft_isdigit(argv[i][j]))
-				return (-1);
-			j++;
-		}
-		j = 0;
-		i++;
 	}
 	return (0);
 }

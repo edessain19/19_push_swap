@@ -30,21 +30,21 @@ void	ft_print_stack(t_data *data, char *cmd)
 
 	i = 0;
 	c = ' ';
-	ft_putstr_fd(cmd, 1);
-	write(1, "stack a = ", 10);
+	ft_putstr_fd(cmd, 2);
+	write(2, "stack a = ", 10);
 	while (i < data->len_a)
 	{
-		ft_putnbr(data->stack_a[i]);
-		ft_putchar(c);
+		ft_putnbr_fd(data->stack_a[i], 2);
+		ft_putchar_fd(c, 2);
 		i++;
 	}
-	ft_putchar('\n');
+	ft_putchar_fd('\n', 2);
 	i = 0;
-	write(1, "stack b = ", 10);
+	write(2, "stack b = ", 10);
 	while (i < data->len_b)
 	{
-		ft_putnbr(data->stack_b[i]);
-		ft_putchar(c);
+		ft_putnbr_fd(data->stack_b[i], 2);
+		ft_putchar_fd(c, 2);
 		i++;
 	}
 	ft_putchar('\n');
@@ -63,4 +63,3 @@ void	ft_print_tab(int *tab, int len)
 	}
 	printf("-----------\n");
 }
-

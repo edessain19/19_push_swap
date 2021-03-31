@@ -5,6 +5,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 typedef struct s_data
 {
@@ -54,7 +55,7 @@ void	ft_push_b(t_data *data, int i, int bool);
 */
 
 int		check_digit(int argc, char **argv, int i);
-int		parsing(t_data *data, int argc, char **argv);
+int		parsing(t_data *data, int argc, char **argv, int j);
 int		check_parsing(t_data *data, int argc, char **argv);
 int		ft_parse_string(t_data *data, int argc, char **argv, int i);
 void	ft_free_all(t_data *data);
@@ -98,5 +99,6 @@ void	ft_print_stack(t_data *data, char *cmd);
 void	ft_putnbr(int n);
 void	ft_putchar(char c);
 char	*ft_strjoin_free(char *s1, char *s2);
+int		ft_error(t_data *data);
 
 #endif

@@ -64,7 +64,9 @@ int	main(int argc, char **argv)
 
 	i = 0;
 	init_struct(&data);
-	if (parsing(&data, argc, argv) < 0)
+	if (parsing(&data, argc, argv, 0) < 0)
+		return (-1);
+	if (quick_sort(&data) < 0)
 		return (-1);
 	if (read_cmd(&data) < 0)
 		return (-1);

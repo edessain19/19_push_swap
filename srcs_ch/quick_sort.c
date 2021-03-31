@@ -32,6 +32,8 @@ int	save_value_chunck(t_data *data, int *tmp)
 	int		j;
 	int		k;
 
+	if (!tmp)
+		return (-1);
 	j = data->len_a / data->chunck;
 	if (data->len_a % data->chunck)
 		j++;
@@ -47,12 +49,11 @@ int	save_value_chunck(t_data *data, int *tmp)
 		k++;
 	}
 	data->value_chunck[i] = tmp[data->len_a - 1];
-	return (0);
+	return (1);
 }
 
-int	quick_sort(t_data *data)
+int	*sort_tmp(t_data *data, int *tmp)
 {
-	int		*tmp;
 	int		i;
 	int		j;
 	int		c;
@@ -60,21 +61,12 @@ int	quick_sort(t_data *data)
 	i = 0;
 	j = 1;
 	c = 0;
-	tmp = malloc(sizeof(int) * data->len_a);
-	if (tmp == NULL)
-		return (-1);
-	while (i < data->len_a)
-	{
-		tmp[i] = data->stack_a[i];
-		i++;
-	}
-	i = 0;
 	while (i < data->len_a)
 	{
 		while (j < data->len_a)
 		{
 			if (tmp[i] == tmp[j])
-				return (-1);
+				return (NULL);
 			if (tmp[i] > tmp[j])
 			{
 				c = tmp[i];
@@ -86,7 +78,30 @@ int	quick_sort(t_data *data)
 		i++;
 		j = i + 1;
 	}
-	save_value_chunck(data, tmp);
+	return (tmp);
+}
+
+int	quick_sort(t_data *data)
+{
+	int		*tmp;
+	int		i;
+
+	i = 0;
+	tmp = malloc(sizeof(int) * data->len_a);
+	if (tmp == NULL)
+		return (-1);
+	while (i < data->len_a)
+	{
+		tmp[i] = data->stack_a[i];
+		i++;
+	}
+	i = 0;
+	tmp = sort_tmp(data, tmp);
+	if (save_value_chunck(data, tmp) < 0)
+	{
+		free(tmp);
+		return (-1);
+	}
 	free(tmp);
 	return (0);
 }

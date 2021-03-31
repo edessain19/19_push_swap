@@ -18,6 +18,7 @@ SRCSC		= ft_bzero.c \
 				ft_strdup.c \
 				ft_strjoin.c \
 				ft_putchar_fd.c \
+				ft_putnbr_fd.c \
 				ft_putstr_fd.c \
 				ft_split.c \
 				get_next_line.c \

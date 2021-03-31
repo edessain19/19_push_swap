@@ -21,7 +21,7 @@ int	get_nbr_chunck(int size)
 	else if (size < 495)
 		return (8);
 	else
-		return (18);
+		return (16);
 }
 
 int	main(int argc, char **argv)
@@ -31,14 +31,17 @@ int	main(int argc, char **argv)
 
 	i = 0;
 	init_struct(&data);
-	if (parsing(&data, argc, argv) < 0)
-		return (-1);
+	if (parsing(&data, argc, argv, 0) < 0)
+		return (ft_error(&data));
 	data.chunck = get_nbr_chunck(data.len);
-	quick_sort(&data);
+	if (quick_sort(&data) < 0)
+		return (ft_error(&data));
+	printf("len = %i\n", data.len);
 	if (data.len <= 5)
 		ft_small_batch(&data);
 	else
 		algo_ps(&data);
+	ft_print_tab(data.stack_a, data.len_a);
 	ft_free_all(&data);
 	return (0);
 }

@@ -19,6 +19,7 @@ SRCS_CH = ./srcs_ch/main.c \
 		./srcs_ch/quick_sort.c \
 		./srcs_ch/utils.c \
 		./srcs_ch/ft_free.c \
+		./srcs_ch/check_error.c \
 
 SRCS_PS = ./srcs_ps/main.c \
 		./srcs_ch/parsing.c \
@@ -31,6 +32,7 @@ SRCS_PS = ./srcs_ps/main.c \
 		./srcs_ps/sort_stack_b.c \
 		./srcs_ch/utils.c \
 		./srcs_ch/ft_free.c \
+		./srcs_ch/check_error.c \
 
 
 OBJS_CH	=	$(SRCS_CH:%.c=%.o)
