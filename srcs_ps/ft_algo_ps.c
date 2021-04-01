@@ -6,7 +6,7 @@
 /*   By: edessain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 17:21:16 by edessain          #+#    #+#             */
-/*   Updated: 2021/03/30 17:27:50 by edessain         ###   ########.fr       */
+/*   Updated: 2021/03/31 18:16:07 by edessain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,6 @@ void	send_to_chunck(t_data *data, int i, int bool)
 	}
 }
 
-int	dort_from_above(t_data *data)
-{
-
-	
-}
-
 int	sort_in_chunck(t_data *data)
 {
 	int		i;
@@ -56,8 +50,9 @@ int	sort_in_chunck(t_data *data)
 		while (i <= data->len_a)
 		{
 			if ((j != data->chunck && data->stack_a[i]
-					<= data->value_chunck[j]) || (j == data->chunck
-					&& data->stack_a[i] < data->value_chunck[j]))
+					<= data->value_chunck[j]) || (j == data->chunck - 1
+					&& data->stack_a[i] <
+					 data->value_chunck[j]))
 			{
 				if (i <= data->len_a / 2)
 					send_to_chunck(data, i, 0);

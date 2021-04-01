@@ -14,8 +14,11 @@
 
 int	malloc_stack(t_data *data, int argc, char **argv, int i)
 {
-	data->stack_a = malloc(sizeof(int) * data->len);
-	data->stack_b = malloc(sizeof(int) * data->len);
+	// if (data->len_a)
+	// {
+		data->stack_a = malloc(sizeof(int) * data->len);
+		data->stack_b = malloc(sizeof(int) * data->len);
+	// }
 	if (data->stack_a == NULL || data->stack_b == NULL)
 		return (-1);
 	if (check_digit(argc, argv, i) < 0)
@@ -69,7 +72,7 @@ int	parsing(t_data *data, int argc, char **argv, int j)
 	while (j < data->len)
 	{
 		data->stack_a[j] = ft_atoi(argv[i]);
-		if (data->stack_a[i] > INT_MAX)
+		if (i < data->len_a && data->stack_a[i] > INT_MAX)
 			return (-1);
 		i++;
 		j++;

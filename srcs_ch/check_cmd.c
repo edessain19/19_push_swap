@@ -46,6 +46,11 @@ int	check_order(t_data *data)
 	int	i;
 
 	i = 0;
+	if (data->len_b != 0)
+	{
+		write(1, "KO\n", 3);
+		return (0);	
+	}
 	while (i < data->len_a - 1)
 	{
 		if (data->stack_a[i] > data->stack_a[i + 1])

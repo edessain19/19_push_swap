@@ -55,6 +55,8 @@ void	ft_print_tab(int *tab, int len)
 	int		i;
 
 	i = 0;
+	write(1, "ok\n", 3);
+	printf("len = %i\n", len);
 	printf("-----------\n");
 	while (i < len)
 	{

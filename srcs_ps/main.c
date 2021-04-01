@@ -6,7 +6,7 @@
 /*   By: edessain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 17:20:11 by edessain          #+#    #+#             */
-/*   Updated: 2021/03/30 17:20:53 by edessain         ###   ########.fr       */
+/*   Updated: 2021/03/31 18:41:35 by edessain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,15 @@ int	main(int argc, char **argv)
 	if (parsing(&data, argc, argv, 0) < 0)
 		return (ft_error(&data));
 	data.chunck = get_nbr_chunck(data.len);
-	if (quick_sort(&data) < 0)
+	if (quick_sort(&data, 1) < 0)
 		return (ft_error(&data));
+	// printf("data.chunck = %i\n", data.chunck);
+	// ft_print_tab(data.value_chunck, data.chunck);
 	if (data.len <= 5)
 		ft_small_batch(&data);
 	else
 		algo_ps(&data);
-	ft_print_tab(data.stack_a, data.len_a);
+	// ft_print_tab(data.stack_a, data.len_a);
 	ft_free_all(&data);
 	return (0);
 }

@@ -48,10 +48,7 @@ int	apply_cmd(t_data *data)
 	while (data->tab_cmd[i])
 	{
 		if (check_cmd(data, i) < 0)
-		{
-			write(1, "Error\n", 6);
 			return (-1);
-		}
 		i++;
 	}
 	return (0);
@@ -65,13 +62,13 @@ int	main(int argc, char **argv)
 	i = 0;
 	init_struct(&data);
 	if (parsing(&data, argc, argv, 0) < 0)
-		return (-1);
-	if (quick_sort(&data) < 0)
-		return (-1);
+		return (ft_error(&data));
+	if (quick_sort(&data, 0) < 0)
+		return (ft_error(&data));
 	if (read_cmd(&data) < 0)
-		return (-1);
+		return (ft_error(&data));
 	if (apply_cmd(&data) < 0)
-		return (-1);
+		return (ft_error(&data));
 	check_order(&data);
 	ft_free_all(&data);
 	return (0);
