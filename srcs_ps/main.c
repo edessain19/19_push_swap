@@ -15,11 +15,11 @@
 int	get_nbr_chunck(int size)
 {
 	if (size < 10)
-		return (2);
+		return (3);
 	if (size < 99)
-		return (4);
+		return (5);
 	else if (size < 495)
-		return (8);
+		return (9);
 	else
 		return (16);
 }
