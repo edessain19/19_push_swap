@@ -38,7 +38,37 @@ void	send_to_chunck(t_data *data, int i, int bool)
 	}
 }
 
-int	sort_in_chunck(t_data *data)
+void 	dispatch_in_chunck(t_data *data, int j, int i)
+{
+	while (i <= data->len_a)
+	{
+		if (j < data->chunck && data->stack_a[i]
+				<= data->value_chunck[j]
+				&& data->stack_a[i] < data->value_chunck[data->chunck - 1])
+		{
+			if (i <= data->len_a / 2)
+				send_to_chunck(data, i, 0);
+			else
+				send_to_chunck(data, i, 1);
+			i = -1;
+		}
+		else if (j + 1 < data->chunck
+			&& data->stack_a[i] < data->value_chunck[j + 1]
+			&& data->stack_a[i] < data->value_chunck[data->chunck - 1])
+		{
+			if (i <= data->len_a / 2)
+				send_to_chunck(data, i, 0);
+			else
+				send_to_chunck(data, i, 1);
+			rb(data);
+			write(1, "rb\n", 3);
+			i = -1;
+		}
+		i++;
+	}
+}
+
+int	algo_ps(t_data *data)
 {
 	int		i;
 	int		j;
@@ -47,41 +77,9 @@ int	sort_in_chunck(t_data *data)
 	j = 0;
 	while (j < data->chunck)
 	{
-		while (i <= data->len_a)
-		{
-			if (j < data->chunck && data->stack_a[i]
-					<= data->value_chunck[j]
-					&& data->stack_a[i] < data->value_chunck[data->chunck - 1])
-			{
-				if (i <= data->len_a / 2)
-					send_to_chunck(data, i, 0);
-				else
-					send_to_chunck(data, i, 1);
-				i = -1;
-			}
-			else if (j + 1 < data->chunck
-				&& data->stack_a[i] < data->value_chunck[j + 1]
-				&& data->stack_a[i] < data->value_chunck[data->chunck - 1])
-			{
-				if (i <= data->len_a / 2)
-					send_to_chunck(data, i, 0);
-				else
-					send_to_chunck(data, i, 1);
-				rb(data);
-				write(1, "rb\n", 3);
-				i = -1;
-			}
-			i++;
-		}
-		i = 0;
+		dispatch_in_chunck(data, j, 0);
 		j += 2;
 	}
-	return (0);
-}
-
-int	algo_ps(t_data *data)
-{
-	sort_in_chunck(data);
 	sort_b(data);
 	return (0);
 }
