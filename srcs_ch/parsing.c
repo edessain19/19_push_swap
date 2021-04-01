@@ -14,11 +14,8 @@
 
 int	malloc_stack(t_data *data, int argc, char **argv, int i)
 {
-	// if (data->len_a)
-	// {
-		data->stack_a = malloc(sizeof(int) * data->len);
-		data->stack_b = malloc(sizeof(int) * data->len);
-	// }
+	data->stack_a = malloc(sizeof(int) * data->len);
+	data->stack_b = malloc(sizeof(int) * data->len);
 	if (data->stack_a == NULL || data->stack_b == NULL)
 		return (-1);
 	if (check_digit(argc, argv, i) < 0)

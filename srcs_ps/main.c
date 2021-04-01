@@ -36,13 +36,12 @@ int	main(int argc, char **argv)
 	data.chunck = get_nbr_chunck(data.len);
 	if (quick_sort(&data, 1) < 0)
 		return (ft_error(&data));
-	// printf("data.chunck = %i\n", data.chunck);
-	// ft_print_tab(data.value_chunck, data.chunck);
 	if (data.len <= 5)
 		ft_small_batch(&data);
 	else
 		algo_ps(&data);
 	// ft_print_tab(data.stack_a, data.len_a);
+	// ft_print_tab(data.stack_b, data.len_b);
 	ft_free_all(&data);
 	return (0);
 }

@@ -42,9 +42,8 @@ void 	dispatch_in_chunck(t_data *data, int j, int i)
 {
 	while (i <= data->len_a)
 	{
-		if (j < data->chunck && data->stack_a[i]
-				<= data->value_chunck[j]
-				&& data->stack_a[i] < data->value_chunck[data->chunck - 1])
+		if (j < data->chunck && data->stack_a[i] <= data->value_chunck[j]
+			&& data->stack_a[i] < data->value_chunck[data->chunck - 1])
 		{
 			if (i <= data->len_a / 2)
 				send_to_chunck(data, i, 0);
