@@ -48,7 +48,7 @@ int	check_order(t_data *data)
 	i = 0;
 	if (data->len_b != 0)
 	{
-		write(1, "KO1\n", 4);
+		write(1, "KO\n", 3);
 		return (0);
 	}
 	while (i < data->len_a - 1)
@@ -56,7 +56,6 @@ int	check_order(t_data *data)
 		if (data->stack_a[i] > data->stack_a[i + 1])
 		{
 			write(1, "KO\n", 3);
-			ft_print_tab(data->stack_a, data->len_a);
 			return (0);
 		}
 		i++;

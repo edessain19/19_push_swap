@@ -12,8 +12,6 @@
 
 #include "../include/push_swap.h"
 
-/////// 3 0 2 1 4 ////////
-
 int	ft_error(t_data *data)
 {
 	write(2, "Error\n", 6);
@@ -62,9 +60,7 @@ int	check_digit(int argc, char **argv, int i)
 	{
 		while (argv[i][j])
 		{
-			while (argv[i][j] == ' ')
-				j++;
-			if (argv[i][j] == '-')
+			if (j == 0 && argv[i][j] == '-')
 				j++;
 			if (ft_isdigit(argv[i][j]))
 				return (-1);
