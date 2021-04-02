@@ -66,7 +66,10 @@ int	*sort_tmp(t_data *data, int *tmp)
 		while (j < data->len_a)
 		{
 			if (tmp[i] == tmp[j])
+			{
+				free(tmp);
 				return (NULL);
+			}
 			if (tmp[i] > tmp[j])
 			{
 				c = tmp[i];
