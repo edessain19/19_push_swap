@@ -83,8 +83,10 @@ int		rrb(t_data *data);
 */
 
 int		ft_small_batch(t_data *data);
+void	bring_above(t_data *data);
+int		ft_batch_5(t_data *data);
 int		ft_batch_4(t_data *data);
-int		ft_bath_3(t_data *data);
+int		ft_batch_3(t_data *data);
 int		ft_batch_2(t_data *data);
 
 /*
