@@ -24,15 +24,15 @@ int	ft_batch_2(t_data *data)
 
 int	ft_batch_3_bis(t_data *data)
 {
-	if (data->stack_a[0] > data->stack_a[1] && data->stack_a[1] < data->stack_a[2]
-		&& data->stack_a[2] < data->stack_a[0])
+	if (data->stack_a[0] > data->stack_a[1] && data->stack_a[1]
+		 < data->stack_a[2] && data->stack_a[2] < data->stack_a[0])
 	{
 		ra(data);
 		write(1, "ra\n", 3);
 		return (1);
 	}
-	else if (data->stack_a[0] < data->stack_a[1] && data->stack_a[1] > data->stack_a[2]
-		&& data->stack_a[2] > data->stack_a[0])
+	else if (data->stack_a[0] < data->stack_a[1] && data->stack_a[1]
+		 > data->stack_a[2] && data->stack_a[2] > data->stack_a[0])
 	{
 		sa(data);
 		ra(data);
@@ -40,8 +40,8 @@ int	ft_batch_3_bis(t_data *data)
 		write(1, "ra\n", 3);
 		return (1);
 	}
-	else if (data->stack_a[0] < data->stack_a[1] && data->stack_a[1] > data->stack_a[2]
-		&& data->stack_a[2] < data->stack_a[0])
+	else if (data->stack_a[0] < data->stack_a[1] && data->stack_a[1]
+		 > data->stack_a[2] && data->stack_a[2] < data->stack_a[0])
 	{
 		rra(data);
 		write(1, "rra\n", 4);
@@ -52,17 +52,18 @@ int	ft_batch_3_bis(t_data *data)
 
 int	ft_batch_3(t_data *data)
 {
-	if (data->stack_a[0] < data->stack_a[1] && data->stack_a[1] < data->stack_a[2])
+	if (data->stack_a[0] < data->stack_a[1]
+		 && data->stack_a[1] < data->stack_a[2])
 		return (1);
-	else if (data->stack_a[0] > data->stack_a[1] && data->stack_a[1] < data->stack_a[2]
-		&& data->stack_a[2] > data->stack_a[0])
+	else if (data->stack_a[0] > data->stack_a[1] && data->stack_a[1]
+		 < data->stack_a[2] && data->stack_a[2] > data->stack_a[0])
 	{
 		sa(data);
 		write(1, "sa\n", 3);
 		return (1);
 	}
-	else if (data->stack_a[0] > data->stack_a[1] && data->stack_a[1] > data->stack_a[2]
-		&& data->stack_a[2] < data->stack_a[0])
+	else if (data->stack_a[0] > data->stack_a[1] && data->stack_a[1]
+		> data->stack_a[2] && data->stack_a[2] < data->stack_a[0])
 	{
 		sa(data);
 		rra(data);

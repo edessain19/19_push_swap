@@ -55,11 +55,16 @@ void	ft_print_tab(int *tab, int len)
 	int		i;
 
 	i = 0;
-	printf("-----------\n");
+	ft_putstr_fd("-----------\n", 2);
 	while (i < len)
 	{
-		printf("tab[%i] = %i\n", i, tab[i]);
+		ft_putstr_fd("tab[", 2);
+		ft_putnbr_fd(i, 2);
+		ft_putstr_fd("] = ", 2);
+		ft_putnbr_fd(tab[i], 2);
+		ft_putstr_fd("\n", 2);
+		// printf("tab[%i] = %i\n", i, tab[i]);
 		i++;
 	}
-	printf("-----------\n");
+	ft_putstr_fd("-----------\n", 2);
 }

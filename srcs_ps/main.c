@@ -77,8 +77,6 @@ int	main(int argc, char **argv)
 		ft_small_batch(&data);
 	else
 		algo_ps(&data);
-	// ft_print_tab(data.stack_a, data.len_a);
-	// ft_print_tab(data.stack_b, data.len_b);
 	ft_free_all(&data);
 	return (0);
 }
