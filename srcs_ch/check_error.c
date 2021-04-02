@@ -44,6 +44,8 @@ int	check_parsing(t_data *data, int argc, char **argv)
 		return (-1);
 	if (!ft_strncmp(argv[1], "-v", 2))
 	{
+		if (argc < 3)
+			return (-1);
 		data->debug = 1;
 		i = 2;
 	}
