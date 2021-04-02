@@ -40,7 +40,7 @@ int	ft_parse_string(t_data *data, int argc, char **argv, int i)
 	while (i < data->len)
 	{
 		data->stack_a[i] = ft_atoi(tab[i]);
-		if (data->stack_a[i] > INT_MAX)
+		if (data->stack_a[i] > INT_MAX || data->stack_a[i] < INT_MIN)
 			return (-1);
 		i++;
 		data->len_a++;
