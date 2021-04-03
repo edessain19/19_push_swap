@@ -31,7 +31,7 @@ int	ft_parse_string(t_data *data, int argc, char **argv, int i)
 	tab = ft_split(argv[i], ' ');
 	while (tab[data->len])
 		data->len++;
-	if (malloc_stack(data, argc, argv, i) < 0)
+	if (malloc_stack(data, argc, tab, 0) < 0)
 	{
 		ft_free_tab(tab);
 		return (-1);
@@ -51,7 +51,7 @@ int	ft_parse_string(t_data *data, int argc, char **argv, int i)
 
 int	parsing(t_data *data, int argc, char **argv, int j)
 {
-	int		i;
+	int	i;
 
 	i = check_parsing(data, argc, argv);
 	if (i == -1)
@@ -65,14 +65,14 @@ int	parsing(t_data *data, int argc, char **argv, int j)
 	data->len = argc - i;
 	if (malloc_stack(data, argc, argv, i) < 0)
 		return (-1);
-	j = 0;
-	while (j < data->len)
+	j = -1;
+	while (j++ < data->len)
 	{
 		data->stack_a[j] = ft_atoi(argv[i]);
-		if (i < data->len_a && data->stack_a[i] > INT_MAX)
+		if (i < data->len_a && (data->stack_a[i] > INT_MAX
+				|| data->stack_a[i] < INT_MIN))
 			return (-1);
 		i++;
-		j++;
 		data->len_a++;
 	}
 	return (0);
