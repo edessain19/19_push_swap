@@ -45,7 +45,7 @@ int	apply_cmd(t_data *data)
 	int		i;
 
 	i = 0;
-	while (data->tab_cmd[i])
+	while (data->tab_cmd && data->tab_cmd[i])
 	{
 		if (check_cmd(data, i) < 0)
 			return (-1);

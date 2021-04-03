@@ -68,16 +68,16 @@ int	rra(t_data *data)
 	int		i;
 	int		tmp;
 
-	i = data->len_a;
-	tmp = data->stack_a[i - 1];
-	if (i < 2)
+	if (data->len_a < 2)
 		return (0);
+	i = data->len_a - 1;
+	tmp = data->stack_a[i];
 	while (i > 0)
 	{
 		data->stack_a[i] = data->stack_a[i - 1];
 		i--;
 	}
-	data->stack_a[i] = tmp;
+	data->stack_a[0] = tmp;
 	if (data->debug == 1)
 		ft_print_stack(data, "---rra---\n");
 	return (0);
@@ -88,10 +88,10 @@ int	rrb(t_data *data)
 	int		i;
 	int		tmp;
 
-	i = data->len_b;
-	tmp = data->stack_b[i - 1];
 	if (data->len_b < 2)
 		return (0);
+	i = data->len_b - 1;
+	tmp = data->stack_b[i];
 	while (i > 0)
 	{
 		data->stack_b[i] = data->stack_b[i - 1];

@@ -52,12 +52,10 @@ int	save_value_chunck(t_data *data, int *tmp)
 	return (1);
 }
 
-int	*sort_tmp(t_data *data, int *tmp, int c)
+int	*sort_tmp(t_data *data, int *tmp, int c, int i)
 {
-	int		i;
 	int		j;
 
-	i = 0;
 	j = 1;
 	while (i < data->len_a)
 	{
@@ -97,7 +95,7 @@ int	quick_sort(t_data *data, int x)
 		i++;
 	}
 	i = 0;
-	tmp = sort_tmp(data, tmp, 0);
+	tmp = sort_tmp(data, tmp, 0, 0);
 	if (x == 1)
 	{
 		if (save_value_chunck(data, tmp) < 0)
