@@ -51,9 +51,11 @@ int	ft_small_batch(t_data *data)
 
 int	get_nbr_chunck(int size)
 {
-	if (size < 10)
+	if (size < 5)
+		return (1);
+	else if (size < 10)
 		return (3);
-	if (size < 99)
+	else if (size < 99)
 		return (5);
 	else if (size < 495)
 		return (9);
