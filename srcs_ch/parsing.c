@@ -12,6 +12,33 @@
 
 #include "../include/push_swap.h"
 
+int	ft_atoi_ps(const char *str, t_data *data)
+{
+	int					i;
+	int					sign;
+	unsigned long int	value;
+
+	i = 0;
+	sign = 1;
+	value = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == 43 || str[i] == 45)
+	{
+		if (str[i] == 45)
+			sign = -1;
+		i++;
+	}
+	while (value < 2147483660 && str[i] >= '0' && str[i] <= '9')
+	{
+		value = ((value * 10) + (str[i] - 48));
+		i++;
+	}
+	if ((value > 2147483647 && sign == 1) || (value > 2147483648 && sign == -1))
+		data->size++;
+	return (value * sign);
+}
+
 int	malloc_stack(t_data *data, int argc, char **argv, int i)
 {
 	data->stack_a = malloc(sizeof(int) * data->len);
@@ -39,13 +66,12 @@ int	ft_parse_string(t_data *data, int argc, char **argv, int i)
 	i = 0;
 	while (i < data->len)
 	{
-		if (ft_strlen(tab[i]) > 10 || data->stack_a[i] > INT_MAX
-			|| data->stack_a[i] < INT_MIN)
-			return (-1);
-		data->stack_a[i] = ft_atoi(tab[i]);
+		data->stack_a[i] = ft_atoi_ps(tab[i], data);
 		i++;
 		data->len_a++;
 	}
+	if (data->size != 0)
+		return (-1);
 	ft_free_tab(tab);
 	return (0);
 }
@@ -69,12 +95,11 @@ int	parsing(t_data *data, int argc, char **argv, int j)
 	j = -1;
 	while (++j < data->len)
 	{
-		if (ft_strlen(argv[i]) > 10
-			|| ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN)
-			return (-1);
-		data->stack_a[j] = ft_atoi(argv[i]);
+		data->stack_a[j] = ft_atoi_ps(argv[i], data);
 		i++;
 		data->len_a++;
 	}
+	if (data->size != 0)
+		return (-1);
 	return (0);
 }

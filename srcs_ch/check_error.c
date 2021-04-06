@@ -33,6 +33,7 @@ void	init_struct(t_data *data)
 	data->stack_b = NULL;
 	data->tab_cmd = NULL;
 	data->nb_max = 0;
+	data->size = 0;
 }
 
 int	check_parsing(t_data *data, int argc, char **argv)

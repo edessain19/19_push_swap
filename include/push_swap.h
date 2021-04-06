@@ -20,6 +20,7 @@ typedef struct s_data
 	int		chunck;
 	int		*value_chunck;
 	int		nb_max;
+	int		size;
 }				t_data;
 
 /*
