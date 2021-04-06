@@ -96,7 +96,7 @@ int		ft_batch_2(t_data *data);
 
 int		check_order_stack(t_data *data);
 int		quick_sort(t_data *data, int i);
-int		save_value_chunck(t_data *data, int *tmp);
+int		save_value_chunck(t_data *data, int *tmp, int x);
 void	ft_print_tab(int *tab, int len);
 void	ft_print_stack(t_data *data, char *cmd);
 void	ft_putnbr(int n);

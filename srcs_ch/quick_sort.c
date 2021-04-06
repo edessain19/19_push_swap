@@ -26,7 +26,7 @@ int	check_order_stack(t_data *data)
 	return (1);
 }
 
-int	save_value_chunck(t_data *data, int *tmp)
+int	save_value_chunck(t_data *data, int *tmp, int x)
 {
 	int		i;
 	int		j;
@@ -34,6 +34,8 @@ int	save_value_chunck(t_data *data, int *tmp)
 
 	if (tmp == NULL)
 		return (-1);
+	if (x == 0)
+		return (1);
 	j = data->len_a / data->chunck;
 	if (data->len_a % data->chunck)
 		j++;
@@ -96,13 +98,10 @@ int	quick_sort(t_data *data, int x)
 	}
 	i = 0;
 	tmp = sort_tmp(data, tmp, 0, 0);
-	if (x == 1)
+	if (save_value_chunck(data, tmp, x) < 0)
 	{
-		if (save_value_chunck(data, tmp) < 0)
-		{
-			free(tmp);
-			return (-1);
-		}
+		free(tmp);
+		return (-1);
 	}
 	free(tmp);
 	return (0);
