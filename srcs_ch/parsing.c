@@ -39,9 +39,10 @@ int	ft_parse_string(t_data *data, int argc, char **argv, int i)
 	i = 0;
 	while (i < data->len)
 	{
-		data->stack_a[i] = ft_atoi(tab[i]);
-		if (data->stack_a[i] > INT_MAX || data->stack_a[i] < INT_MIN)
+		if (ft_strlen(tab[i]) > 10 || data->stack_a[i] > INT_MAX
+			|| data->stack_a[i] < INT_MIN)
 			return (-1);
+		data->stack_a[i] = ft_atoi(tab[i]);
 		i++;
 		data->len_a++;
 	}
@@ -66,12 +67,12 @@ int	parsing(t_data *data, int argc, char **argv, int j)
 	if (malloc_stack(data, argc, argv, i) < 0)
 		return (-1);
 	j = -1;
-	while (j++ < data->len)
+	while (++j < data->len)
 	{
-		data->stack_a[j] = ft_atoi(argv[i]);
-		if (i < data->len_a && (data->stack_a[i] > INT_MAX
-				|| data->stack_a[i] < INT_MIN))
+		if (ft_strlen(argv[i]) > 10
+			|| ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN)
 			return (-1);
+		data->stack_a[j] = ft_atoi(argv[i]);
 		i++;
 		data->len_a++;
 	}
