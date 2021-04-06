@@ -12,6 +12,20 @@
 
 #include "../include/push_swap.h"
 
+int	check_space(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i])
+	{
+		if (str[i] == ' ')
+			return (-1);
+		i++;
+	}
+	return (0);
+}
+
 int	read_cmd(t_data *data)
 {
 	char	*line;
@@ -21,7 +35,7 @@ int	read_cmd(t_data *data)
 	while (get_next_line(0, &line))
 	{
 		data->instruction = ft_strjoin_free(data->instruction, line);
-		if (data->instruction == NULL)
+		if (check_space(line) < 0 || data->instruction == NULL)
 			return (-1);
 		data->instruction = ft_strjoin_free(data->instruction, " ");
 		if (data->instruction == NULL)
