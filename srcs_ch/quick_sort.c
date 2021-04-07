@@ -35,7 +35,7 @@ int	save_value_chunck(t_data *data, int *tmp, int x)
 	if (tmp == NULL)
 		return (-1);
 	if (x == 0)
-		return (1);
+		return (-1);
 	j = data->len_a / data->chunck;
 	if (data->len_a % data->chunck)
 		j++;
@@ -44,7 +44,7 @@ int	save_value_chunck(t_data *data, int *tmp, int x)
 	data->value_chunck = malloc(sizeof(int) * (data->chunck));
 	if (data->value_chunck == NULL)
 		return (-1);
-	while (i < data->chunck - 1)
+	while (i < data->chunck - 1 && j != 0)
 	{
 		data->value_chunck[i] = tmp[(k * j) - 1];
 		i++;

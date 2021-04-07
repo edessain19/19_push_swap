@@ -31,6 +31,8 @@ void	bring_above(t_data *data)
 		write(1, "ra\n", 3);
 		index--;
 	}
+	pb(data);
+	write(1, "pb\n", 3);
 }
 
 int	ft_small_batch(t_data *data)
@@ -53,7 +55,7 @@ int	get_nbr_chunck(int size)
 {
 	if (size < 5)
 		return (1);
-	else if (size < 10)
+	else if (size < 12)
 		return (3);
 	else if (size < 99)
 		return (5);

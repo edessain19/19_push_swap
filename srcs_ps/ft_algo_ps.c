@@ -12,6 +12,20 @@
 
 #include "../include/push_swap.h"
 
+int	check_sorted(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i + 1 < data->len_a)
+	{
+		if (data->stack_a[i] > data->stack_a[i + 1])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void	send_to_chunck(t_data *data, int i, int bool)
 {
 	if (bool == 0)
@@ -74,6 +88,8 @@ int	algo_ps(t_data *data)
 
 	i = 0;
 	j = 0;
+	if (!check_sorted(data))
+		return (0);
 	while (j < data->chunck)
 	{
 		dispatch_in_chunck(data, j, 0);

@@ -77,6 +77,9 @@ int	ft_batch_3(t_data *data)
 
 int	ft_batch_4(t_data *data)
 {
+	if (data->stack_a[0] < data->stack_a[1] && data->stack_a[1]
+		< data->stack_a[2] && data->stack_a[2] < data->stack_a[3])
+		return (1);
 	pb(data);
 	write(1, "pb\n", 3);
 	ft_batch_3(data);
@@ -98,12 +101,12 @@ int	ft_batch_4(t_data *data)
 
 int	ft_batch_5(t_data *data)
 {
+	if (data->stack_a[0] < data->stack_a[1] && data->stack_a[1]
+		< data->stack_a[2] && data->stack_a[2] < data->stack_a[3]
+		&& data->stack_a[3] < data->stack_a[4])
+		return (1);
 	bring_above(data);
-	pb(data);
-	write(1, "pb\n", 3);
 	bring_above(data);
-	pb(data);
-	write(1, "pb\n", 3);
 	ft_batch_3(data);
 	pa(data);
 	write(1, "pa\n", 3);

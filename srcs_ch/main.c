@@ -75,6 +75,8 @@ int	main(int argc, char **argv)
 
 	i = 0;
 	init_struct(&data);
+	if (argc < 2)
+		return (0);
 	if (parsing(&data, argc, argv, 0) < 0)
 		return (ft_error(&data));
 	if (quick_sort(&data, 0) < 0)
