@@ -35,7 +35,7 @@ int	save_value_chunck(t_data *data, int *tmp, int x)
 	if (tmp == NULL)
 		return (-1);
 	if (x == 0)
-		return (-1);
+		return (0);
 	j = data->len_a / data->chunck;
 	if (data->len_a % data->chunck)
 		j++;
