@@ -72,6 +72,8 @@ int	main(int argc, char **argv)
 
 	i = 0;
 	init_struct(&data);
+	if (argc < 2)
+		return (0);
 	if (parsing(&data, argc, argv, 0) < 0)
 		return (ft_error(&data));
 	data.chunck = get_nbr_chunck(data.len);
