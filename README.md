@@ -1,6 +1,6 @@
 # 19_push_swap
 
-In this project We have to sort data on a stack, with a limited set of instructions, using
+In this project we have to sort data on a stack, with a limited set of instructions, using
 the lowest possible number of actions.
 
 The project consist in two part:
